@@ -12,6 +12,7 @@ call vice#Extend({
         \ ],
         \ 'coffee': [
             \ 'github:kchmck/vim-coffee-script',
+            \ 'github:AndrewRadev/coffee_tools.vim',
         \ ],
         \ 'go': [
             \ 'github:jnwhiteh/vim-golang',
@@ -117,4 +118,10 @@ call vice#Extend({
 
 " VimL {{{
     au FileType vim nnoremap <buffer><leader>r :w<cr> <bar> :so %<cr>
+" }}}
+
+" {{{
+    let g:coffee_tools_default_mappings = 1
+    let g:coffee_tools_split_command = 'vsplit'
+    let g:coffee_tools_autojump = 1
 " }}}

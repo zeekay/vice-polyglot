@@ -50,7 +50,6 @@ call vice#Extend({
         \ ],
         \ 'php': [
             \ 'github:spf13/PIV',
-            \ 'github:techlivezheng/tagbar-phpctags',
         \ ],
         \ 'stylus': [
             \ 'github:wavded/vim-stylus',

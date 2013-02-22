@@ -88,14 +88,9 @@ call vice#Extend({
         !node %
     endf
 
-    func! s:UpdateNodePath()
-      let $NODE_PATH='./node_modules:/usr/local/lib/jsctags/:'.$NODE_PATH
-    endf
-
     if executable('node')
         au FileType javascript command! RunInNode call s:RunInNode()
         au FileType javascript map <buffer><leader>r :RunInNode<cr>
-        au FileType javascript,coffee call s:UpdateNodePath()
     endif
 " }}}
 

@@ -49,6 +49,7 @@ call vice#Extend({
         \ ],
         \ 'markdown': [
             \ 'github:tpope/vim-markdown',
+            \ 'github:zeekay/vim-instant-markdown',
         \ ],
         \ 'python': [
             \ 'github:zeekay/python.vim',

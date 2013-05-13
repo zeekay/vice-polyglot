@@ -3,16 +3,19 @@ call vice#Extend({
         \ 'actionscript': [
             \ 'github:endel/actionscript.vim',
         \ ],
+        \ 'brainfuck': [
+           \   'github:vim-scripts/brainfuck-syntax'
+        \ ],
         \ 'css\|sass\|scss\|stylus': [
             \ 'github:hail2u/vim-css3-syntax',
         \ ],
         \ 'clojure': [
-            \ 'github:zeekay/VimClojure-hax',
-            \ 'github:vim-scripts/VimClojure',
+            \ 'github:tpope/vim-foreplay',
+            \ 'github:tpope/vim-classpath',
+            \ 'github:guns/vim-clojure-static',
         \ ],
         \ 'coffee': [
             \ 'github:kchmck/vim-coffee-script',
-            \ 'github:AndrewRadev/coffee_tools.vim',
         \ ],
         \ 'go': [
             \ 'github:jnwhiteh/vim-golang',
@@ -36,6 +39,7 @@ call vice#Extend({
         \ ],
         \ 'javascript': [
             \ 'github:zeekay/vim-js2coffee',
+            \ 'github:pangloss/vim-javascript',
         \ ],
         \ 'json': [
             \ 'github:elzr/vim-json',
@@ -72,10 +76,8 @@ call vice#Extend({
 " CoffeeScript {{{
     au FileType coffee setl foldmethod=indent nofoldenable
     au FileType coffee setl nosmartindent
-    au FileType coffee map <buffer><leader>r :CoffeeRun<cr>
     au FileType coffee map <buffer><leader>c :CoffeeCompile watch vertical<cr>
-    au FileType coffee imap <buffer><leader>r <c-o>:CoffeeRun<cr>
-    au FileType coffee imap <buffer><leader>c <c-o>:CoffeeCompile watch vertical<cr>
+    " au FileType coffee map <buffer><leader>r :CoffeeRun<cr>
 " }}}
 
 " Haskell {{{
@@ -120,8 +122,7 @@ call vice#Extend({
     au FileType vim nnoremap <buffer><leader>r :w<cr> <bar> :so %<cr>
 " }}}
 
-" {{{
-    let g:coffee_tools_default_mappings = 1
-    let g:coffee_tools_split_command = 'vsplit'
-    let g:coffee_tools_autojump = 1
+" Brainfuck {{{
+    au BufRead,BufNewFile *.bf set filetype=brainfuck
+    au BufRead,BufNewFile *.brainfuck set filetype=brainfuck
 " }}}

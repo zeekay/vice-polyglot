@@ -32,7 +32,6 @@ call vice#Extend({
 	    \ ],
         \ 'html\|xhtml\|xml': [
             \ 'github:othree/html5.vim',
-            \ 'github:zeekay/xml.vim',
         \ ],
         \ 'jade': [
             \ 'github:digitaltoad/vim-jade',

@@ -38,7 +38,6 @@ call vice#Extend({
         \ ],
         \ 'javascript': [
             \ 'github:zeekay/vim-js2coffee',
-            \ 'github:jelera/vim-javascript-syntax',
             \ 'github:pangloss/vim-javascript',
         \ ],
         \ 'json': [

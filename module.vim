@@ -38,6 +38,7 @@ call vice#Extend({
         \ ],
         \ 'javascript': [
             \ 'github:zeekay/vim-js2coffee',
+            \ 'github:jelera/vim-javascript-syntax',
             \ 'github:pangloss/vim-javascript',
         \ ],
         \ 'json': [
@@ -49,6 +50,9 @@ call vice#Extend({
         \ 'markdown': [
             \ 'github:tpope/vim-markdown',
             \ 'github:zeekay/vim-instant-markdown',
+        \ ],
+        \ 'nginx': [
+            \ 'github:evanmiller/nginx-vim-syntax'
         \ ],
         \ 'python': [
             \ 'github:zeekay/python.vim',
@@ -115,6 +119,13 @@ call vice#Extend({
 " }}}
 
 " Javascript {{{
+    au FileType javascript hi link javascriptBraces Text |
+                         \ hi link javascriptParens Text |
+                         \ hi link javaScriptOpSymbols Text |
+                         \ hi link javaScriptEndColons Text |
+                         \ hi link javaScriptExceptions Statement |
+                         \ hi link javaScriptPrototype Text
+
     " Run current file in node for quick evaluation
     func! s:RunInNode()
         w

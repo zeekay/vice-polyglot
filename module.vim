@@ -52,7 +52,7 @@ call vice#Extend({
             \ 'github:zeekay/vim-instant-markdown',
         \ ],
         \ 'nginx': [
-            \ 'github:evanmiller/nginx-vim-syntax'
+            \ 'github:thiderman/nginx-vim-syntax'
         \ ],
         \ 'python': [
             \ 'github:zeekay/python.vim',

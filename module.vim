@@ -17,6 +17,9 @@ call vice#Extend({
         \ 'coffee': [
             \ 'github:kchmck/vim-coffee-script',
         \ ],
+        \ 'elixir': [
+            \ 'github:elixir-lang/vim-elixir',
+        \ ],
         \ 'go': [
             \ 'github:jnwhiteh/vim-golang',
         \ ],
@@ -26,6 +29,7 @@ call vice#Extend({
         \ 'haskell': [
             \ 'github:wlangstroth/vim-haskell',
             \ 'github:zeekay/haskellmode-vim',
+            \ 'github:bitc/vim-hdevtools',
         \ ],
         \ 'help': [
             \ 'github:juanpabloaj/help.vim',
@@ -84,8 +88,10 @@ call vice#Extend({
 
 " Detect filetypes {{{
     au BufNewFile,BufRead *.as set filetype=actionscript
+    au BufRead,BufNewFile *.bf set filetype=brainfuck
     au BufNewFile,BufRead *.clj set filetype=clojure
     au BufNewFile,BufRead *.coffee,Cakefile set filetype=coffee
+    au BufRead,BufNewFile *.{ex,exs} set filetype=elixir
     au BufNewFile,BufRead *.go set filetype=go
     au BufNewFile,BufRead *.haml set filetype=haml
     au BufNewFile,BufRead *.jade set filetype=jade

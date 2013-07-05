@@ -10,9 +10,10 @@ call vice#Extend({
             \ 'github:hail2u/vim-css3-syntax',
         \ ],
         \ 'clojure': [
-            \ 'github:tpope/vim-foreplay',
-            \ 'github:tpope/vim-classpath',
             \ 'github:guns/vim-clojure-static',
+            \ 'github:kien/rainbow_parentheses.vim',
+            \ 'github:tpope/vim-classpath',
+            \ 'github:tpope/vim-fireplace',
         \ ],
         \ 'coffee': [
             \ 'github:kchmck/vim-coffee-script',
@@ -88,10 +89,8 @@ call vice#Extend({
 
 " Detect filetypes {{{
     au BufNewFile,BufRead *.as set filetype=actionscript
-    au BufRead,BufNewFile *.bf set filetype=brainfuck
-    au BufNewFile,BufRead *.clj set filetype=clojure
+    au BufNewFile,BufRead *.bf set filetype=brainfuck
     au BufNewFile,BufRead *.coffee,Cakefile set filetype=coffee
-    au BufRead,BufNewFile *.{ex,exs} set filetype=elixir
     au BufNewFile,BufRead *.go set filetype=go
     au BufNewFile,BufRead *.haml set filetype=haml
     au BufNewFile,BufRead *.jade set filetype=jade
@@ -99,18 +98,9 @@ call vice#Extend({
     au BufNewFile,BufRead *.sass set filetype=sass
     au BufNewFile,BufRead *.scss set filetype=scss
     au BufNewFile,BufRead *.styl set filetype=stylus
+    au BufNewFile,BufRead *.{clj,cljs} set filetype=clojure
+    au BufNewFile,BufRead *.{ex,exs} set filetype=elixir
     au BufNewFile,BufRead *.{md,mkd,mkdn,mark*} set filetype=markdown
-" }}}
-
-" Clojure {{{
-    let g:vimclojure#SplitPos = "left"
-    let g:vimclojure#HighlightBuiltins = 1
-    let g:vimclojure#HighlightContrib = 1
-    let g:vimclojure#ParenRainbow = 1
-    let g:vimclojure#DynamicHighlighting = 1
-    if executable('ng')
-        let g:vimclojure#WantNailgun = 1
-    endif
 " }}}
 
 " CoffeeScript {{{

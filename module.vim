@@ -12,6 +12,7 @@ call vice#Extend({
         \ 'clojure': [
             \ 'github:guns/vim-clojure-static',
             \ 'github:kien/rainbow_parentheses.vim',
+            \ 'github:vim-scripts/paredit.vim',
             \ 'github:tpope/vim-fireplace',
         \ ],
         \ 'coffee': [

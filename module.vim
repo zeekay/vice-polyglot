@@ -4,7 +4,7 @@ call vice#Extend({
             \ 'github:endel/actionscript.vim',
         \ ],
         \ 'brainfuck': [
-           \   'github:vim-scripts/brainfuck-syntax'
+           \ 'github:vim-scripts/brainfuck-syntax'
         \ ],
         \ 'css\|sass\|scss\|stylus': [
             \ 'github:hail2u/vim-css3-syntax',
@@ -12,7 +12,6 @@ call vice#Extend({
         \ 'clojure': [
             \ 'github:guns/vim-clojure-static',
             \ 'github:kien/rainbow_parentheses.vim',
-            \ 'github:tpope/vim-classpath',
             \ 'github:tpope/vim-fireplace',
         \ ],
         \ 'coffee': [
@@ -89,7 +88,6 @@ call vice#Extend({
 
 " Detect filetypes {{{
     au BufNewFile,BufRead *.as set filetype=actionscript
-    au BufNewFile,BufRead *.bf set filetype=brainfuck
     au BufNewFile,BufRead *.coffee,Cakefile set filetype=coffee
     au BufNewFile,BufRead *.go set filetype=go
     au BufNewFile,BufRead *.haml set filetype=haml
@@ -98,16 +96,27 @@ call vice#Extend({
     au BufNewFile,BufRead *.sass set filetype=sass
     au BufNewFile,BufRead *.scss set filetype=scss
     au BufNewFile,BufRead *.styl set filetype=stylus
-    au BufNewFile,BufRead *.{clj,cljs} set filetype=clojure
+    au BufNewFile,BufRead *.{brainfuck,bf} set filetype=brainfuck
     au BufNewFile,BufRead *.{ex,exs} set filetype=elixir
     au BufNewFile,BufRead *.{md,mkd,mkdn,mark*} set filetype=markdown
+" }}}
+
+" Clojure {{{
+    " ugly hack to get tpope's vim-fireplace to load
+    func! s:ClojureHack()
+        if !exists('g:clojurehack_loaded')
+            let g:clojurehack_loaded = 1
+            so ~/.vim/addons/vim-fireplace/plugin/fireplace.vim
+            so ~/.vim/addons/vim-fireplace/autoload/nrepl/fireplace_connection.vim
+            set filetype=clojure
+        endif
+    endf
+    au FileType clojure call s:ClojureHack()
 " }}}
 
 " CoffeeScript {{{
     au FileType coffee setl foldmethod=indent nofoldenable
     au FileType coffee setl nosmartindent
-    au FileType coffee map <buffer><leader>c :CoffeeCompile watch vertical<cr>
-    " au FileType coffee map <buffer><leader>r :CoffeeRun<cr>
 " }}}
 
 " Haskell {{{
@@ -121,17 +130,6 @@ call vice#Extend({
                          \ hi link javaScriptEndColons Text |
                          \ hi link javaScriptExceptions Statement |
                          \ hi link javaScriptPrototype Text
-
-    " Run current file in node for quick evaluation
-    func! s:RunInNode()
-        w
-        !node %
-    endf
-
-    if executable('node')
-        au FileType javascript command! RunInNode call s:RunInNode()
-        au FileType javascript map <buffer><leader>r :RunInNode<cr>
-    endif
 " }}}
 
 " JSON {{{
@@ -153,13 +151,4 @@ call vice#Extend({
     let g:ropevim_vim_completion = 1
     let g:ropevim_extended_complete = 1
     " au FileType python setl foldmethod=syntax
-" }}}
-
-" VimL {{{
-    au FileType vim nnoremap <buffer><leader>r :w<cr> <bar> :so %<cr>
-" }}}
-
-" Brainfuck {{{
-    au BufRead,BufNewFile *.bf set filetype=brainfuck
-    au BufRead,BufNewFile *.brainfuck set filetype=brainfuck
 " }}}

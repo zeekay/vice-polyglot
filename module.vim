@@ -60,7 +60,7 @@ call vice#Extend({
             \ 'github:thiderman/nginx-vim-syntax'
         \ ],
         \ 'python': [
-            \ 'github:zeekay/python.vim',
+            \ 'github:zeekay/vim-python',
         \ ],
         \ 'php': [
             \ 'github:spf13/PIV',

@@ -102,6 +102,7 @@ call vice#Extend({
     au BufNewFile,BufRead *.{brainfuck,bf} set filetype=brainfuck
     au BufNewFile,BufRead *.{ex,exs} set filetype=elixir
     au BufNewFile,BufRead *.{md,mkd,mkdn,mark*} set filetype=markdown
+    au BufNewFile,BufRead /etc/nginx/* set filetype=nginx
 " }}}
 
 " Clojure {{{

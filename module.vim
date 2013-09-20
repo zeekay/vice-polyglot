@@ -60,7 +60,9 @@ call vice#Extend({
             \ 'github:thiderman/nginx-vim-syntax'
         \ ],
         \ 'python': [
-            \ 'github:zeekay/vim-python',
+            \ 'github:zeekay/vim-python-indent',
+            \ 'github:hdima/python-syntax',
+            \ 'github:jmcantrell/vim-virtualenv',
         \ ],
         \ 'php': [
             \ 'github:spf13/PIV',
@@ -143,13 +145,9 @@ call vice#Extend({
 " }}}
 
 " Python {{{
-    let g:virtualenv_directory = expand($HOME."/ve")
     let g:python_highlight_all = 1
     let g:python_show_sync = 1
     let g:python_print_as_function = 1
-    let g:pythonmode_enable_django = 1
-    let g:pythonmode_enable_rope = 0
-    let g:ropevim_vim_completion = 1
-    let g:ropevim_extended_complete = 1
-    " au FileType python setl foldmethod=syntax
+    let g:virtualenv_auto_activate = 1
+    let g:virtualenv_directory = '~/ve'
 " }}}

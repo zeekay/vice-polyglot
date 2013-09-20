@@ -151,4 +151,6 @@ call vice#Extend({
     let g:python_print_as_function = 1
     let g:virtualenv_auto_activate = 1
     let g:virtualenv_directory = '~/ve'
+    au FileType python setlocal nosmartindent
+    au FileType python setlocal nocindent
 " }}}

@@ -60,7 +60,7 @@ call vice#Extend({
             \ 'github:thiderman/nginx-vim-syntax'
         \ ],
         \ 'python': [
-            \ 'github:zeekay/vim-python-indent',
+            \ 'github:hynek/vim-python-pep8-indent',
             \ 'github:hdima/python-syntax',
             \ 'github:jmcantrell/vim-virtualenv',
         \ ],

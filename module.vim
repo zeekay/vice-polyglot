@@ -67,6 +67,9 @@ call vice#Extend({
         \ 'php': [
             \ 'github:spf13/PIV',
         \ ],
+        \ 'scala': [
+            \ 'github:derekwyatt/vim-scala',
+        \ ],
         \ 'stylus': [
             \ 'github:wavded/vim-stylus',
         \ ],
@@ -98,6 +101,7 @@ call vice#Extend({
     au BufNewFile,BufRead *.json set filetype=json
     au BufNewFile,BufRead *.sass set filetype=sass
     au BufNewFile,BufRead *.scss set filetype=scss
+    au BufNewFile,BufRead *.scala set filetype=scala
     au BufNewFile,BufRead *.styl set filetype=stylus
     au BufNewFile,BufRead *.{brainfuck,bf} set filetype=brainfuck
     au BufNewFile,BufRead *.{ex,exs} set filetype=elixir

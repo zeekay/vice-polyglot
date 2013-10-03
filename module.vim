@@ -53,8 +53,8 @@ call vice#Extend({
             \ 'github:tpope/vim-endwise',
         \ ],
         \ 'markdown': [
-            \ 'github:tpope/vim-markdown',
             \ 'github:zeekay/vim-instant-markdown',
+            \ 'github:tpope/vim-markdown',
         \ ],
         \ 'nginx': [
             \ 'github:thiderman/nginx-vim-syntax'

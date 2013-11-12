@@ -74,6 +74,9 @@ call vice#Extend({
         \ 'scala': [
             \ 'github:derekwyatt/vim-scala',
         \ ],
+        \ 'scss': [
+            \ 'github:cakebaker/scss-syntax.vim',
+        \ ],
         \ 'stylus': [
             \ 'github:wavded/vim-stylus',
         \ ],

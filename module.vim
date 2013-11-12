@@ -8,6 +8,7 @@ call vice#Extend({
         \ ],
         \ 'css\|sass\|scss\|stylus': [
             \ 'github:hail2u/vim-css3-syntax',
+            \ 'github:skammer/vim-css-color',
         \ ],
         \ 'clojure': [
             \ 'github:guns/vim-clojure-static',
@@ -48,6 +49,9 @@ call vice#Extend({
         \ ],
         \ 'json': [
             \ 'github:elzr/vim-json',
+        \ ],
+        \ 'less': [
+            \ 'github:groenewege/vim-less',
         \ ],
         \ 'lua\|ruby\|sh\|vim\|zsh': [
             \ 'github:tpope/vim-endwise',

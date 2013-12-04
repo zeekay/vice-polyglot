@@ -1,3 +1,39 @@
+" Indent {{{
+    au FileType xml,xhtml,htmldjango setl shiftwidth=4
+    au FileType css,html,coffee,haml,stylus,jade,javascript setl shiftwidth=2
+" }}}
+
+" Enable omnicomplete {{{
+    au FileType c setl omnifunc=ccomplete#Complete
+    au FileType coffee setl omnifunc=javascriptcomplete#CompleteJS
+    au FileType css setl omnifunc=csscomplete#CompleteCSS
+    au FileType php setl omnifunc=phpcomplete#CompletePHP
+    au FileType python setl omnifunc=pythoncomplete#Complete
+    au FileType ruby,eruby setl omnifunc=rubycomplete#Complete
+    au FileType xhtml,html setl omnifunc=htmlcomplete#CompleteTags
+    au FileType xml setl omnifunc=xmlcomplete#CompleteTags
+    if !exists('g:vice.neocompletion.enable_tern')
+        au FileType javascript setl omnifunc=javascriptcomplete#CompleteJS
+    endif
+" }}}
+
+" Detect filetypes {{{
+    au BufNewFile,BufRead *.as setl filetype=actionscript
+    au BufNewFile,BufRead *.coffee,Cakefile setl filetype=coffee
+    au BufNewFile,BufRead *.go setl filetype=go
+    au BufNewFile,BufRead *.haml setl filetype=haml
+    au BufNewFile,BufRead *.jade setl filetype=jade
+    au BufNewFile,BufRead *.json setl filetype=json
+    au BufNewFile,BufRead *.sass setl filetype=sass
+    au BufNewFile,BufRead *.scss setl filetype=scss
+    au BufNewFile,BufRead *.scala setl filetype=scala
+    au BufNewFile,BufRead *.styl setl filetype=stylus
+    au BufNewFile,BufRead *.{brainfuck,bf} setl filetype=brainfuck
+    au BufNewFile,BufRead *.{ex,exs} setl filetype=elixir
+    au BufNewFile,BufRead *.{md,mkd,mkdn,mark*} setl filetype=markdown
+    au BufNewFile,BufRead /etc/nginx/* setl filetype=nginx
+" }}}
+
 call vice#Extend({
     \ 'ft_addons': {
         \ 'actionscript': [
@@ -85,39 +121,6 @@ call vice#Extend({
         \ ],
     \ },
 \ })
-
-" Indent {{{
-    au FileType xml,xhtml,htmldjango setl shiftwidth=4
-    au FileType css,html,coffee,haml,stylus,jade,javascript setl shiftwidth=2
-" }}}
-
-" Enable omnicomplete {{{
-    au FileType c setl omnifunc=ccomplete#Complete
-    au FileType coffee,javascript setl omnifunc=javascriptcomplete#CompleteJS
-    au FileType css setl omnifunc=csscomplete#CompleteCSS
-    au FileType php setl omnifunc=phpcomplete#CompletePHP
-    au FileType python setl omnifunc=pythoncomplete#Complete
-    au FileType ruby,eruby setl omnifunc=rubycomplete#Complete
-    au FileType xhtml,html setl omnifunc=htmlcomplete#CompleteTags
-    au FileType xml setl omnifunc=xmlcomplete#CompleteTags
-" }}}
-
-" Detect filetypes {{{
-    au BufNewFile,BufRead *.as setl filetype=actionscript
-    au BufNewFile,BufRead *.coffee,Cakefile setl filetype=coffee
-    au BufNewFile,BufRead *.go setl filetype=go
-    au BufNewFile,BufRead *.haml setl filetype=haml
-    au BufNewFile,BufRead *.jade setl filetype=jade
-    au BufNewFile,BufRead *.json setl filetype=json
-    au BufNewFile,BufRead *.sass setl filetype=sass
-    au BufNewFile,BufRead *.scss setl filetype=scss
-    au BufNewFile,BufRead *.scala setl filetype=scala
-    au BufNewFile,BufRead *.styl setl filetype=stylus
-    au BufNewFile,BufRead *.{brainfuck,bf} setl filetype=brainfuck
-    au BufNewFile,BufRead *.{ex,exs} setl filetype=elixir
-    au BufNewFile,BufRead *.{md,mkd,mkdn,mark*} setl filetype=markdown
-    au BufNewFile,BufRead /etc/nginx/* setl filetype=nginx
-" }}}
 
 " Clojure {{{
     " ugly hack to get tpope's vim-fireplace to load

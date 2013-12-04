@@ -100,20 +100,20 @@ call vice#Extend({
 " }}}
 
 " Detect filetypes {{{
-    au BufNewFile,BufRead *.as set filetype=actionscript
-    au BufNewFile,BufRead *.coffee,Cakefile set filetype=coffee
-    au BufNewFile,BufRead *.go set filetype=go
-    au BufNewFile,BufRead *.haml set filetype=haml
-    au BufNewFile,BufRead *.jade set filetype=jade
-    au BufNewFile,BufRead *.json set filetype=json
-    au BufNewFile,BufRead *.sass set filetype=sass
-    au BufNewFile,BufRead *.scss set filetype=scss
-    au BufNewFile,BufRead *.scala set filetype=scala
-    au BufNewFile,BufRead *.styl set filetype=stylus
-    au BufNewFile,BufRead *.{brainfuck,bf} set filetype=brainfuck
-    au BufNewFile,BufRead *.{ex,exs} set filetype=elixir
-    au BufNewFile,BufRead *.{md,mkd,mkdn,mark*} set filetype=markdown
-    au BufNewFile,BufRead /etc/nginx/* set filetype=nginx
+    au BufNewFile,BufRead *.as setl filetype=actionscript
+    au BufNewFile,BufRead *.coffee,Cakefile setl filetype=coffee
+    au BufNewFile,BufRead *.go setl filetype=go
+    au BufNewFile,BufRead *.haml setl filetype=haml
+    au BufNewFile,BufRead *.jade setl filetype=jade
+    au BufNewFile,BufRead *.json setl filetype=json
+    au BufNewFile,BufRead *.sass setl filetype=sass
+    au BufNewFile,BufRead *.scss setl filetype=scss
+    au BufNewFile,BufRead *.scala setl filetype=scala
+    au BufNewFile,BufRead *.styl setl filetype=stylus
+    au BufNewFile,BufRead *.{brainfuck,bf} setl filetype=brainfuck
+    au BufNewFile,BufRead *.{ex,exs} setl filetype=elixir
+    au BufNewFile,BufRead *.{md,mkd,mkdn,mark*} setl filetype=markdown
+    au BufNewFile,BufRead /etc/nginx/* setl filetype=nginx
 " }}}
 
 " Clojure {{{

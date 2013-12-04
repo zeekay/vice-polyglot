@@ -61,7 +61,10 @@ call vice#Extend({
             \ 'github:tpope/vim-markdown',
         \ ],
         \ 'nginx': [
-            \ 'github:thiderman/nginx-vim-syntax'
+            \ 'github:thiderman/nginx-vim-syntax',
+        \ ],
+        \ 'perl': [
+            \ 'github:c9s/perlomni.vim',
         \ ],
         \ 'python': [
             \ 'github:hynek/vim-python-pep8-indent',

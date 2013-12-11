@@ -26,12 +26,28 @@
     au BufNewFile,BufRead *.json setl filetype=json
     au BufNewFile,BufRead *.sass setl filetype=sass
     au BufNewFile,BufRead *.scss setl filetype=scss
-    au BufNewFile,BufRead *.scala setl filetype=scala
+    au BufNewFile,BufRead *.sbt,*.scala setl filetype=scala
     au BufNewFile,BufRead *.styl setl filetype=stylus
     au BufNewFile,BufRead *.{brainfuck,bf} setl filetype=brainfuck
     au BufNewFile,BufRead *.{ex,exs} setl filetype=elixir
     au BufNewFile,BufRead *.{md,mkd,mkdn,mark*} setl filetype=markdown
     au BufNewFile,BufRead /etc/nginx/* setl filetype=nginx
+
+    func! s:ActivatePlay2Html()
+        if exists('g:activated_play2html') | return | endif
+        let g:activated_play2html = 1
+        call vice#ForceActivateAddon('github:othree/html5.vim')
+        call vice#ForceActivateAddon('github:derekwyatt/vim-scala')
+        call vice#ForceActivateAddon('github:gre/play2vim')
+    endf
+    au BufNewFile,BufRead *.scala.html call s:ActivatePlay2Html() | setl filetype=html syntax=play2-html
+
+    func! s:ActivateMustache()
+        if exists('g:activated_mustache') | return | endif
+        let g:activated_mustache = 1
+        call vice#ForceActivateAddon('github:mustache/vim-mustache-handlebars')
+    endf
+    au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs,*.hogan,*.hulk,*.hjs call s:ActivateMustache() | setl filetype=html syntax=mustache
 " }}}
 
 call vice#Extend({
@@ -96,6 +112,9 @@ call vice#Extend({
             \ 'github:zeekay/vim-instant-markdown',
             \ 'github:tpope/vim-markdown',
         \ ],
+        \ 'mustache': [
+            \ 'github:mustache/vim-mustache-handlebars',
+        \ ],
         \ 'nginx': [
             \ 'github:thiderman/nginx-vim-syntax',
         \ ],
@@ -112,6 +131,10 @@ call vice#Extend({
         \ ],
         \ 'scala': [
             \ 'github:derekwyatt/vim-scala',
+        \ ],
+        \ 'play2-html': [
+            \ 'github:derekwyatt/vim-scala',
+            \ 'github:gre/play2vim',
         \ ],
         \ 'scss': [
             \ 'github:cakebaker/scss-syntax.vim',

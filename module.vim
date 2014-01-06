@@ -32,22 +32,6 @@
     au BufNewFile,BufRead *.{ex,exs} setl filetype=elixir
     au BufNewFile,BufRead *.{md,mkd,mkdn,mark*} setl filetype=markdown
     au BufNewFile,BufRead /etc/nginx/* setl filetype=nginx
-
-    func! s:ActivatePlay2Html()
-        if exists('g:activated_play2html') | return | endif
-        let g:activated_play2html = 1
-        call vice#ForceActivateAddon('github:othree/html5.vim')
-        call vice#ForceActivateAddon('github:derekwyatt/vim-scala')
-        call vice#ForceActivateAddon('github:gre/play2vim')
-    endf
-    au BufNewFile,BufRead *.scala.html call s:ActivatePlay2Html() | setl filetype=html syntax=play2-html
-
-    func! s:ActivateMustache()
-        if exists('g:activated_mustache') | return | endif
-        let g:activated_mustache = 1
-        call vice#ForceActivateAddon('github:mustache/vim-mustache-handlebars')
-    endf
-    au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs,*.hogan,*.hulk,*.hjs call s:ActivateMustache() | setl filetype=html syntax=mustache
 " }}}
 
 call vice#Extend({
@@ -116,7 +100,7 @@ call vice#Extend({
             \ 'github:mustache/vim-mustache-handlebars',
         \ ],
         \ 'nginx': [
-            \ 'github:thiderman/nginx-vim-syntax',
+            \ 'github:evanmiller/nginx-vim-syntax',
         \ ],
         \ 'perl': [
             \ 'github:c9s/perlomni.vim',
@@ -144,19 +128,6 @@ call vice#Extend({
         \ ],
     \ },
 \ })
-
-" Clojure {{{
-    " ugly hack to get tpope's vim-fireplace to load
-    func! s:ClojureHack()
-        if !exists('g:clojurehack_loaded')
-            let g:clojurehack_loaded = 1
-            so ~/.vim/addons/vim-fireplace/plugin/fireplace.vim
-            so ~/.vim/addons/vim-fireplace/autoload/nrepl/fireplace_connection.vim
-            set filetype=clojure
-        endif
-    endf
-    au FileType clojure call s:ClojureHack()
-" }}}
 
 " CoffeeScript {{{
     au FileType coffee setl foldmethod=indent nofoldenable
@@ -194,3 +165,21 @@ call vice#Extend({
     au FileType python setlocal nosmartindent
     au FileType python setlocal nocindent
 " }}}
+
+" Hacks {{{
+    au BufNewFile,BufRead *.scala.html call vice#polyglot#play2html() | setl filetype=html syntax=play2-html
+    au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs,*.hogan,*.hulk,*.hjs call vice#polyglot#mustache() | setl filetype=html syntax=mustache
+    au FileType clojure call vice#polyglot#clojure()
+" }}}
+
+au FileType stylus call vice#polyglot#bebop_reload()
+
+au FileType javascript command! Uglify silent! :%!uglifyjs
+
+au FileType coffee nnoremap <leader>c :CoffeeCompile vert<cr>
+au FileType coffee nnoremap <leader>t :!cake test<cr>
+au FileType coffee nnoremap <leader>r :CoffeeRun<cr><c-w>w
+
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+au FileType haskell nnoremap <buffer> <leader>r call vice#polyglot#run("runhaskell ".expand("%"))

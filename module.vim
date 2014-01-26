@@ -32,6 +32,7 @@
     au BufNewFile,BufRead *.{ex,exs} setl filetype=elixir
     au BufNewFile,BufRead *.{md,mkd,mkdn,mark*} setl filetype=markdown
     au BufNewFile,BufRead /etc/nginx/* setl filetype=nginx
+    au BufNewFile,BufRead /etc/pmta/config setl filetype=config
 " }}}
 
 call vice#Extend({

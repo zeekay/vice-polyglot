@@ -60,7 +60,7 @@ call vice#Extend({
             \ 'github:elixir-lang/vim-elixir',
         \ ],
         \ 'go': [
-            \ 'github:jnwhiteh/vim-golang',
+            \ 'github:Blackrush/vim-gocode',
         \ ],
         \ 'haml\|sass\|scss': [
             \ 'github:tpope/vim-haml',
@@ -130,6 +130,10 @@ call vice#Extend({
 " CoffeeScript {{{
     au FileType coffee setl foldmethod=indent nofoldenable
     au FileType coffee setl nosmartindent
+" }}}
+
+" Go {{{
+    let g:gofmt_command = "gofmt -tabs=false -tabwidth=4 -e=true"
 " }}}
 
 " Haskell {{{

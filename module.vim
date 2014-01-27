@@ -132,10 +132,6 @@ call vice#Extend({
     au FileType coffee setl nosmartindent
 " }}}
 
-" Go {{{
-    let g:gofmt_command = "gofmt -tabs=false -tabwidth=4 -e=true"
-" }}}
-
 " Haskell {{{
     let g:haddock_browser="open"
 " }}}
@@ -181,6 +177,8 @@ au FileType javascript command! Uglify silent! :%!uglifyjs
 au FileType coffee nnoremap <leader>c :CoffeeCompile vert<cr>
 au FileType coffee nnoremap <leader>t :!cake test<cr>
 au FileType coffee nnoremap <leader>r :CoffeeRun<cr><c-w>w
+
+au FileType go nnoremap <leader>r :w<cr>:GoRun<cr>
 
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>

@@ -132,9 +132,17 @@ call vice#Extend({
     au FileType coffee setl nosmartindent
 " }}}
 
+" Go {{{
+    let g:go_fmt_autofmt = 0
+" }}}
+
 " Haskell {{{
     let g:haddock_browser="open"
 " }}}
+
+" HTML {{{
+    let html_no_rendering=1
+" "}}}
 
 " Javascript {{{
     au FileType javascript hi link javascriptBraces Text |

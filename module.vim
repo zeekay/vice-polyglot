@@ -182,11 +182,48 @@ au FileType stylus call vice#polyglot#bebop_reload()
 
 au FileType javascript command! Uglify silent! :%!uglifyjs
 
-au FileType coffee nnoremap <leader>c :CoffeeCompile vert<cr>
-au FileType coffee nnoremap <leader>t :!cake test<cr>
-au FileType coffee nnoremap <leader>r :CoffeeRun<cr><c-w>w
+au FileType coffee nnoremap <buffer> <leader>c :CoffeeCompile vert<cr>
+au FileType coffee nnoremap <buffer> <leader>t :!cake test<cr>
 
-au FileType go nnoremap <leader>r :w<cr>:GoRun<cr>
+func! <SID>RunCoffee()
+    " save position
+    normal! Hmx``
+
+    " close preview window
+    pclose
+
+    " open preview window
+    botright pedit [Run]
+
+    " get buffer
+    let lines = getbufline(bufnr('%'), 1, '$')
+
+    " jump to preview window
+    wincmd p
+
+    " put bufferlines
+    call append(0, lines)
+    " normal 1d_
+
+    " eval buffer with coffeescript
+    silent! exec "%!coffee -s"
+
+    " set some modes
+    setlocal ro
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+    setlocal nobuflisted
+
+    " return to original window
+    wincmd p
+
+    " restore position
+    normal! `xzt``
+endf
+
+au FileType coffee nnoremap <buffer> <leader>r :call <SID>RunCoffee()<cr>
+
+au FileType go nnoremap <buffer> <leader>r :w<cr>:GoRun<cr>
 
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>

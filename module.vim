@@ -1,4 +1,4 @@
-"https://github.com/verus-io/optimus/compare/2bfb43cfab4e...319b4d11dd4https://github.com/verus-io/optimus/compare/2bfb43cfab4e...319b4d11dd499 Indent {{{
+" Indent {{{
     au FileType xml,xhtml,htmldjango setl shiftwidth=4
     au FileType css,html,coffee,haml,stylus,jade,javascript setl shiftwidth=2
 " }}}

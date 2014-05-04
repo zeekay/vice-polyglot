@@ -176,6 +176,7 @@ call vice#Extend({
     au BufNewFile,BufRead *.scala.html call vice#polyglot#play2html() | setl filetype=html syntax=play2-html
     au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs,*.hogan,*.hulk,*.hjs call vice#polyglot#mustache() | setl filetype=html syntax=mustache
     au FileType clojure call vice#polyglot#clojure()
+    au BufNewFile,BufRead *.bats call vice#ForceActivateAddon('github:vim-scripts/bats.vim') | setl filetype=bats syntax=sh
 " }}}
 
 au FileType stylus call vice#polyglot#bebop_reload()

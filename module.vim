@@ -60,7 +60,7 @@ call vice#Extend({
             \ 'github:elixir-lang/vim-elixir',
         \ ],
         \ 'go': [
-            \ 'github:Blackrush/vim-gocode',
+            \ 'github:fatih/vim-go',
         \ ],
         \ 'haml\|sass\|scss': [
             \ 'github:tpope/vim-haml',

@@ -1,6 +1,6 @@
 " Indent {{{
-    au FileType xml,xhtml,htmldjango setl shiftwidth=4
-    au FileType css,html,coffee,haml,stylus,jade,javascript setl shiftwidth=2
+    au FileType xml,xhtml setl shiftwidth=4
+    au FileType css,html,htmldjango,coffee,haml,stylus,jade,javascript setl shiftwidth=2
 " }}}
 
 " Enable omnicomplete {{{

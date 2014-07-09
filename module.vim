@@ -4,14 +4,15 @@
 " }}}
 
 " Enable omnicomplete {{{
-    au FileType c setl omnifunc=ccomplete#Complete
-    au FileType coffee setl omnifunc=javascriptcomplete#CompleteJS
-    au FileType css setl omnifunc=csscomplete#CompleteCSS
-    au FileType php setl omnifunc=phpcomplete#CompletePHP
-    au FileType python setl omnifunc=pythoncomplete#Complete
+    au FileType c          setl omnifunc=ccomplete#Complete
+    au FileType coffee     setl omnifunc=javascriptcomplete#CompleteJS
+    au FileType css        setl omnifunc=csscomplete#CompleteCSS
+    au FileType php        setl omnifunc=phpcomplete#CompletePHP
+    au FileType python     setl omnifunc=pythoncomplete#Complete
     au FileType ruby,eruby setl omnifunc=rubycomplete#Complete
     au FileType xhtml,html setl omnifunc=htmlcomplete#CompleteTags
-    au FileType xml setl omnifunc=xmlcomplete#CompleteTags
+    au FileType xml        setl omnifunc=xmlcomplete#CompleteTags
+
     if !exists('g:vice.neocompletion.enable_tern')
         au FileType javascript setl omnifunc=javascriptcomplete#CompleteJS
     endif

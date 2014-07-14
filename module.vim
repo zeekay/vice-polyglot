@@ -25,9 +25,10 @@
     au BufNewFile,BufRead *.haml setl filetype=haml
     au BufNewFile,BufRead *.jade setl filetype=jade
     au BufNewFile,BufRead *.json setl filetype=json
+    au BufNewFile,BufRead *.less setl filetype=less
     au BufNewFile,BufRead *.sass setl filetype=sass
-    au BufNewFile,BufRead *.scss setl filetype=scss
     au BufNewFile,BufRead *.sbt,*.scala setl filetype=scala
+    au BufNewFile,BufRead *.scss setl filetype=scss
     au BufNewFile,BufRead *.styl setl filetype=stylus
     au BufNewFile,BufRead *.{brainfuck,bf} setl filetype=brainfuck
     au BufNewFile,BufRead *.{ex,exs} setl filetype=elixir

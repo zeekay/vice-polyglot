@@ -138,47 +138,12 @@ call vice#Extend({
 " }}}
 
 " CoffeeScript {{{
-    func! <SID>RunCoffee()
-        " save position
-        normal! Hmx``
-
-        " close preview window
-        pclose
-
-        " open preview window
-        botright pedit [Run]
-
-        " get buffer
-        let lines = getbufline(bufnr('%'), 1, '$')
-
-        " jump to preview window
-        wincmd p
-
-        " put bufferlines
-        call append(0, lines)
-        " normal 1d_
-
-        " eval buffer with coffeescript
-        silent! exec "%!coffee -s"
-
-        " set some modes
-        setlocal ro
-        setlocal buftype=nofile
-        setlocal bufhidden=hide
-        setlocal nobuflisted
-
-        " return to original window
-        wincmd p
-
-        " restore position
-        normal! `xzt``
-    endf
-
-    au FileType coffee nnoremap <buffer> <leader>r :call <SID>RunCoffee()<cr>
-    au FileType coffee nnoremap <buffer> <leader>c :CoffeeCompile vert<cr>
-    au FileType coffee nnoremap <buffer> <leader>t :!cake test<cr>
     au FileType coffee setl foldmethod=indent nofoldenable
     au FileType coffee setl nosmartindent
+
+    au FileType coffee nnoremap <buffer> <leader>r :call vice#polyglot#run_coffee()<cr>
+    au FileType coffee nnoremap <buffer> <leader>c :CoffeeCompile vert<cr>
+    au FileType coffee nnoremap <buffer> <leader>t :!cake test<cr>
 
     hi link coffeeFunction  Function
     hi link coffeeMethod    Function
@@ -187,49 +152,9 @@ call vice#Extend({
 
 " Go {{{
     let g:go_fmt_autofmt = 0
-
-    " Prefer to install local copies of each tool
     let g:go_disable_autoinstall = 1
 
-    let g:gotools = {
-        \ 'errcheck':  'github.com/kisielk/errcheck',
-        \ 'gocode':    'github.com/nsf/gocode',
-        \ 'godef':     'code.google.com/p/rog-go/exp/cmd/godef',
-        \ 'goimports': 'github.com/bradfitz/goimports',
-        \ 'golint':    'github.com/golang/lint/golint',
-        \ 'oracle':    'code.google.com/p/go.tools/cmd/oracle',
-    \ }
-
-    func s:InstallGoTools(...)
-        let urls = []
-
-        if len(a:000) > 0
-            for cmd in a:000
-                call add(urls, g:gotools[cmd])
-            endfor
-        else
-            let urls = values(g:gotools)
-        endif
-
-        for url in urls
-            exe '!go get -u '.url
-        endfor
-    endf
-
-    " This will try to install any missing tools
-    if exists('$GOPATH')
-        let gopath = expand('~/go')
-        let cmds = keys(g:gotools)
-
-        for cmd in cmds
-            let bin = gopath.'/bin/'.cmd
-            if !filereadable(bin)
-                call s:InstallGoTools(cmd)
-            endif
-            exe 'let g:go_'.cmd.'_bin="'.bin.'"'
-        endfor
-    endif
-
+    au FileType go call vice#polyglot#go()
     au FileType go nnoremap <buffer> gd <Plug>(go-def)
     au FileType go nnoremap <buffer> <Leader>ds <Plug>(go-def-split)
     au FileType go nnoremap <buffer> <Leader>dt <Plug>(go-def-tab)
@@ -244,7 +169,7 @@ call vice#Extend({
 " }}}
 
 " Haskell {{{
-    let g:haddock_browser="open"
+    let g:haddock_browser = "open"
     au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
     au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
     au FileType haskell nnoremap <buffer> <leader>r call vice#polyglot#run("runhaskell ".expand("%"))
@@ -279,7 +204,7 @@ call vice#Extend({
     let g:python_show_sync = 1
     let g:python_print_as_function = 1
     let g:virtualenv_auto_activate = 1
-    let g:virtualenv_directory = '~/ve'
+    let g:virtualenv_directory = $VIRTUALENVS_DIR
     au FileType python setlocal nosmartindent
     au FileType python setlocal nocindent
 " }}}

@@ -196,8 +196,8 @@ call vice#Extend({
         \ 'gocode':    'github.com/nsf/gocode',
         \ 'godef':     'code.google.com/p/rog-go/exp/cmd/godef',
         \ 'goimports': 'github.com/bradfitz/goimports',
-        \ 'golint':    'github.com/golang/lint',
-        \ 'oracle':    'code.google.com/p/go.tools/oracle',
+        \ 'golint':    'github.com/golang/lint/golint',
+        \ 'oracle':    'code.google.com/p/go.tools/cmd/oracle',
     \ }
 
     func s:InstallGoTools(...)

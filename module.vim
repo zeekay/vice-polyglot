@@ -187,17 +187,6 @@ call vice#Extend({
 
 " Go {{{
     let g:go_fmt_autofmt = 0
-    au FileType go nnoremap <buffer> gd <Plug>(go-def)
-    au FileType go nnoremap <buffer> <Leader>ds <Plug>(go-def-split)
-    au FileType go nnoremap <buffer> <Leader>dt <Plug>(go-def-tab)
-    au FileType go nnoremap <buffer> <Leader>dv <Plug>(go-def-vertical)
-    au FileType go nnoremap <buffer> <Leader>gb <Plug>(go-doc-browser)
-    au FileType go nnoremap <buffer> <Leader>gd <Plug>(go-doc)
-    au FileType go nnoremap <buffer> <Leader>gi <Plug>(go-info)
-    au FileType go nnoremap <buffer> <Leader>gv <Plug>(go-doc-vertical)
-    au FileType go nnoremap <buffer> <leader>b  <Plug>(go-build)
-    au FileType go nnoremap <buffer> <leader>r  <Plug>(go-run)
-    au FileType go nnoremap <buffer> <leader>t  <Plug>(go-test)
 
     " Prefer to install local copies of each tool
     let g:go_disable_autoinstall = 1
@@ -211,24 +200,47 @@ call vice#Extend({
         \ 'oracle':    'code.google.com/p/go.tools/oracle',
     \ }
 
-    func s:InstallGoTools()
-        let urls = values(g:gotools)
+    func s:InstallGoTools(...)
+        let urls = []
+
+        if len(a:000) > 0
+            for cmd in a:000
+                call add(urls, g:gotools[cmd])
+            endfor
+        else
+            let urls = values(g:gotools)
+        endif
+
         for url in urls
             exe '!go get -u '.url
         endfor
     endf
 
+    " This will try to install any missing tools
     if exists('$GOPATH')
         let gopath = expand('~/go')
         let cmds = keys(g:gotools)
 
         for cmd in cmds
-            if !executable(cmd)
-                call s:InstallGoTools()
+            let bin = gopath.'/bin/'.cmd
+            if !filereadable(bin)
+                call s:InstallGoTools(cmd)
             endif
-            exe "let g:go_".cmd."_bin='".gopath."/bin/".cmd."'"
+            exe 'let g:go_'.cmd.'_bin="'.bin.'"'
         endfor
     endif
+
+    au FileType go nnoremap <buffer> gd <Plug>(go-def)
+    au FileType go nnoremap <buffer> <Leader>ds <Plug>(go-def-split)
+    au FileType go nnoremap <buffer> <Leader>dt <Plug>(go-def-tab)
+    au FileType go nnoremap <buffer> <Leader>dv <Plug>(go-def-vertical)
+    au FileType go nnoremap <buffer> <Leader>gb <Plug>(go-doc-browser)
+    au FileType go nnoremap <buffer> <Leader>gd <Plug>(go-doc)
+    au FileType go nnoremap <buffer> <Leader>gi <Plug>(go-info)
+    au FileType go nnoremap <buffer> <Leader>gv <Plug>(go-doc-vertical)
+    au FileType go nnoremap <buffer> <leader>b  <Plug>(go-build)
+    au FileType go nnoremap <buffer> <leader>r  <Plug>(go-run)
+    au FileType go nnoremap <buffer> <leader>t  <Plug>(go-test)
 " }}}
 
 " Haskell {{{

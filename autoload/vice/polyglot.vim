@@ -6,10 +6,6 @@ endf
 func! vice#polyglot#clojure()
     if exists('g:vice_polyglot_clojure_loaded') | return | endif
     let g:vice_polyglot_clojure_loaded = 1
-
-    so ~/.vim/addons/vim-fireplace/plugin/fireplace.vim
-    so ~/.vim/addons/vim-fireplace/autoload/nrepl/fireplace_connection.vim
-    set filetype=clojure
 endf
 
 func! vice#polyglot#play2html()

@@ -18,16 +18,20 @@
     endif
 " }}}
 
+
 " Detect filetypes {{{
     au BufNewFile,BufRead *.as setl filetype=actionscript
+    au BufNewFile,BufRead *.bats call vice#ForceActivateAddon('github:vim-scripts/bats.vim') | setl filetype=bats syntax=sh
     au BufNewFile,BufRead *.coffee,Cakefile setl filetype=coffee
     au BufNewFile,BufRead *.go setl filetype=go
     au BufNewFile,BufRead *.haml setl filetype=haml
     au BufNewFile,BufRead *.jade setl filetype=jade
     au BufNewFile,BufRead *.json setl filetype=json
     au BufNewFile,BufRead *.less setl filetype=less
+    au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs,*.hogan,*.hulk,*.hjs call vice#polyglot#mustache() | setl filetype=html syntax=mustache
     au BufNewFile,BufRead *.sass setl filetype=sass
     au BufNewFile,BufRead *.sbt,*.scala setl filetype=scala
+    au BufNewFile,BufRead *.scala.html call vice#polyglot#play2html() | setl filetype=html syntax=play2-html
     au BufNewFile,BufRead *.scss setl filetype=scss
     au BufNewFile,BufRead *.styl setl filetype=stylus
     au BufNewFile,BufRead *.{brainfuck,bf} setl filetype=brainfuck
@@ -129,28 +133,109 @@ call vice#Extend({
     \ },
 \ })
 
+" Clojure {{{
+    au FileType clojure call vice#polyglot#clojure()
+" }}}
+
 " CoffeeScript {{{
+    func! <SID>RunCoffee()
+        " save position
+        normal! Hmx``
+
+        " close preview window
+        pclose
+
+        " open preview window
+        botright pedit [Run]
+
+        " get buffer
+        let lines = getbufline(bufnr('%'), 1, '$')
+
+        " jump to preview window
+        wincmd p
+
+        " put bufferlines
+        call append(0, lines)
+        " normal 1d_
+
+        " eval buffer with coffeescript
+        silent! exec "%!coffee -s"
+
+        " set some modes
+        setlocal ro
+        setlocal buftype=nofile
+        setlocal bufhidden=hide
+        setlocal nobuflisted
+
+        " return to original window
+        wincmd p
+
+        " restore position
+        normal! `xzt``
+    endf
+
+    au FileType coffee nnoremap <buffer> <leader>r :call <SID>RunCoffee()<cr>
+    au FileType coffee nnoremap <buffer> <leader>c :CoffeeCompile vert<cr>
+    au FileType coffee nnoremap <buffer> <leader>t :!cake test<cr>
     au FileType coffee setl foldmethod=indent nofoldenable
     au FileType coffee setl nosmartindent
+
+    hi link coffeeFunction  Function
+    hi link coffeeMethod    Function
+    hi link coffeeObjAssign Statement
 " }}}
 
 " Go {{{
     let g:go_fmt_autofmt = 0
-    au FileType go nmap <Leader>gi <Plug>(go-info)
-    au FileType go nmap <Leader>gd <Plug>(go-doc)
-    au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-    au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
-    au FileType go nmap <leader>r <Plug>(go-run)
-    au FileType go nmap <leader>b <Plug>(go-build)
-    au FileType go nmap <leader>t <Plug>(go-test)
-    au FileType go nmap gd <Plug>(go-def)
-    au FileType go nmap <Leader>ds <Plug>(go-def-split)
-    au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-    au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+    au FileType go nnoremap <buffer> gd <Plug>(go-def)
+    au FileType go nnoremap <buffer> <Leader>ds <Plug>(go-def-split)
+    au FileType go nnoremap <buffer> <Leader>dt <Plug>(go-def-tab)
+    au FileType go nnoremap <buffer> <Leader>dv <Plug>(go-def-vertical)
+    au FileType go nnoremap <buffer> <Leader>gb <Plug>(go-doc-browser)
+    au FileType go nnoremap <buffer> <Leader>gd <Plug>(go-doc)
+    au FileType go nnoremap <buffer> <Leader>gi <Plug>(go-info)
+    au FileType go nnoremap <buffer> <Leader>gv <Plug>(go-doc-vertical)
+    au FileType go nnoremap <buffer> <leader>b  <Plug>(go-build)
+    au FileType go nnoremap <buffer> <leader>r  <Plug>(go-run)
+    au FileType go nnoremap <buffer> <leader>t  <Plug>(go-test)
+
+    " Prefer to install local copies of each tool
+    let g:go_disable_autoinstall = 1
+
+    let g:gotools = {
+        \ 'errcheck':  'github.com/kisielk/errcheck',
+        \ 'gocode':    'github.com/nsf/gocode',
+        \ 'godef':     'code.google.com/p/rog-go/exp/cmd/godef',
+        \ 'goimports': 'github.com/bradfitz/goimports',
+        \ 'golint':    'github.com/golang/lint',
+        \ 'oracle':    'code.google.com/p/go.tools/oracle',
+    \ }
+
+    func s:InstallGoTools()
+        let urls = values(g:gotools)
+        for url in urls
+            exe '!go get -u '.url
+        endfor
+    endf
+
+    if exists('$GOPATH')
+        let gopath = expand('~/go')
+        let cmds = keys(g:gotools)
+
+        for cmd in cmds
+            if !executable(cmd)
+                call s:InstallGoTools()
+            endif
+            exe "let g:go_".cmd."_bin='".gopath."/bin/".cmd."'"
+        endfor
+    endif
 " }}}
 
 " Haskell {{{
     let g:haddock_browser="open"
+    au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+    au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+    au FileType haskell nnoremap <buffer> <leader>r call vice#polyglot#run("runhaskell ".expand("%"))
 " }}}
 
 " HTML {{{
@@ -164,6 +249,8 @@ call vice#Extend({
                          \ hi link javaScriptEndColons Text |
                          \ hi link javaScriptExceptions Statement |
                          \ hi link javaScriptPrototype Text
+
+    au FileType javascript command! Uglify silent! :%!uglifyjs
 " }}}
 
 " JSON {{{
@@ -185,60 +272,6 @@ call vice#Extend({
     au FileType python setlocal nocindent
 " }}}
 
-" Hacks {{{
-    au BufNewFile,BufRead *.scala.html call vice#polyglot#play2html() | setl filetype=html syntax=play2-html
-    au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs,*.hogan,*.hulk,*.hjs call vice#polyglot#mustache() | setl filetype=html syntax=mustache
-    au FileType clojure call vice#polyglot#clojure()
-    au BufNewFile,BufRead *.bats call vice#ForceActivateAddon('github:vim-scripts/bats.vim') | setl filetype=bats syntax=sh
+" Stylus {{{
+    au FileType stylus call vice#polyglot#bebop_reload()
 " }}}
-
-au FileType stylus call vice#polyglot#bebop_reload()
-
-au FileType javascript command! Uglify silent! :%!uglifyjs
-
-au FileType coffee nnoremap <buffer> <leader>c :CoffeeCompile vert<cr>
-au FileType coffee nnoremap <buffer> <leader>t :!cake test<cr>
-
-func! <SID>RunCoffee()
-    " save position
-    normal! Hmx``
-
-    " close preview window
-    pclose
-
-    " open preview window
-    botright pedit [Run]
-
-    " get buffer
-    let lines = getbufline(bufnr('%'), 1, '$')
-
-    " jump to preview window
-    wincmd p
-
-    " put bufferlines
-    call append(0, lines)
-    " normal 1d_
-
-    " eval buffer with coffeescript
-    silent! exec "%!coffee -s"
-
-    " set some modes
-    setlocal ro
-    setlocal buftype=nofile
-    setlocal bufhidden=hide
-    setlocal nobuflisted
-
-    " return to original window
-    wincmd p
-
-    " restore position
-    normal! `xzt``
-endf
-
-au FileType coffee nnoremap <buffer> <leader>r :call <SID>RunCoffee()<cr>
-
-au FileType go nnoremap <buffer> <leader>r :w<cr>:GoRun<cr>
-
-au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
-au FileType haskell nnoremap <buffer> <leader>r call vice#polyglot#run("runhaskell ".expand("%"))

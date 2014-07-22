@@ -1,4 +1,3 @@
-" filetype specific mappings
 func! vice#polyglot#bebop_reload()
     au InsertLeave * :w!
 endf

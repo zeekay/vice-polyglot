@@ -22,7 +22,7 @@
 " Detect filetypes {{{
     au BufNewFile,BufRead *.as setl filetype=actionscript
     au BufNewFile,BufRead *.bats call vice#ForceActivateAddon('github:vim-scripts/bats.vim') | setl filetype=bats syntax=sh
-    au BufNewFile,BufRead *.coffee,Cakefile setl filetype=coffee
+    au BufNewFile,BufRead *.coffee,Cakefile call vice#ForceActivateAddon('github:zeekay/vim-cake') | setl filetype=coffee
     au BufNewFile,BufRead *.go setl filetype=go
     au BufNewFile,BufRead *.haml setl filetype=haml
     au BufNewFile,BufRead *.jade setl filetype=jade

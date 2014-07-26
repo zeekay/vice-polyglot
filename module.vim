@@ -80,6 +80,7 @@ call vice#Extend({
             \ 'github:juanpabloaj/help.vim',
 	    \ ],
         \ 'html\|xhtml\|xml': [
+            \ 'github:zeekay/vim-html2jade',
             \ 'github:othree/html5.vim',
         \ ],
         \ 'jade': [
@@ -187,7 +188,7 @@ call vice#Extend({
                          \ hi link javaScriptExceptions Statement |
                          \ hi link javaScriptPrototype Text
 
-    au FileType javascript command! Uglify silent! :%!uglifyjs
+    au FileType javascript command! -buffer Uglify silent! :%!uglifyjs
 " }}}
 
 " JSON {{{

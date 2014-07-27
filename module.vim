@@ -72,11 +72,6 @@ call vice#Extend({
         \ 'haml\|sass\|scss': [
             \ 'github:tpope/vim-haml',
         \ ],
-        \ 'haskell': [
-            \ 'github:wlangstroth/vim-haskell',
-            \ 'github:zeekay/haskellmode-vim',
-            \ 'github:bitc/vim-hdevtools',
-        \ ],
         \ 'help': [
             \ 'github:juanpabloaj/help.vim',
 	    \ ],
@@ -151,7 +146,7 @@ call vice#Extend({
     au FileType coffee setl foldmethod=indent nofoldenable
     au FileType coffee setl nosmartindent
 
-    au FileType coffee nnoremap <buffer> <leader>r :call vice#polyglot#run_coffee()<cr>
+    au FileType coffee nnoremap <buffer> <leader>r :call vice#polyglot#run('coffee -s')<cr>
     au FileType coffee nnoremap <buffer> <leader>c :CoffeeCompile vert<cr>
     au FileType coffee nnoremap <buffer> <leader>t :!cake test<cr>
 
@@ -179,10 +174,18 @@ call vice#Extend({
 " }}}
 
 " Haskell {{{
+    au FileType haskell call vice#ForceActivateAddons([
+        \ 'github:bitc/vim-hdevtools',
+        \ 'github:eagletmt/ghcmod-vim',
+        \ 'github:wlangstroth/vim-haskell',
+    \ ])
+    au FileType haskell nnoremap <buffer> <leader>hc :HdevtoolsClear<CR>
+    au FileType haskell nnoremap <buffer> <leader>hi :HdevtoolsInfo<CR>
+    au FileType haskell nnoremap <buffer> <leader>ht :HdevtoolsType<CR>
+    au FileType haskell nnoremap <buffer> <leader>r :call vice#polyglot#run('runhaskell')<cr>
+    au FileType haskell setl formatprg=pointfree
+
     let g:haddock_browser = "open"
-    au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-    au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
-    au FileType haskell nnoremap <buffer> <leader>r call vice#polyglot#run("runhaskell ".expand("%"))
 " }}}
 
 " HTML {{{

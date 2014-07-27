@@ -2,30 +2,6 @@ func! vice#polyglot#bebop_reload()
     au InsertLeave * :w!
 endf
 
-func! vice#polyglot#run(cmd)
-  echo a:cmd
-  let expanded_cmd = a:cmd
-
-  for part in split(a:cmd, ' ')
-     if part[0] =~ '\v[%#<]'
-        let expanded_part = fnameescape(expand(part))
-        let expanded_cmd = substitute(expanded_cmd, part, expanded_part, '')
-     endif
-  endfor
-
-  botright new
-
-  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-
-  call setline(1, 'You entered:    ' . a:cmd)
-  call setline(2, 'Expanded Form:  ' .expanded_cmd)
-  call setline(3,substitute(getline(2),'.','=','g'))
-
-  execute '$read !'. expanded_cmd
-  setlocal nomodifiable
-  1
-endf
-
 func! vice#polyglot#clojure()
     if exists('g:vice_polyglot_clojure_loaded') | return | endif
     let g:vice_polyglot_clojure_loaded = 1
@@ -88,9 +64,21 @@ func! vice#polyglot#go()
     endfor
 endf
 
-func! vice#polyglot#run_coffee()
+func! vice#polyglot#run(cmd)
+    call vice#standard_issue#signature_disable()
+
+    " Store signature setting if necessary
+    let sig_enabled = 0
+    if exists('b:sig_enabled')
+        let sig_enabled = b:sig_enabled
+        let b:sig_enabled = 0
+    endif
+
     " save position
-    normal! Hmx``
+    normal! HmX``
+
+    " get buffer
+    let lines = getbufline(bufnr('%'), 1, '$')
 
     " close preview window
     pclose
@@ -98,28 +86,31 @@ func! vice#polyglot#run_coffee()
     " open preview window
     botright pedit [Run]
 
-    " get buffer
-    let lines = getbufline(bufnr('%'), 1, '$')
-
-    " jump to preview window
+    " switch to preview window
     wincmd p
 
     " put bufferlines
     call append(0, lines)
-    " normal 1d_
+    normal 1d_
 
-    " eval buffer with coffeescript
-    silent! exec "%!coffee -s"
+    " run command passing buffer as stdin
+    silent! exe '%!'.a:cmd
 
     " set some modes
-    setlocal ro
-    setlocal buftype=nofile
-    setlocal bufhidden=hide
-    setlocal nobuflisted
+    setl ro
+    setl buftype=nofile
+    setl bufhidden=hide
+    setl nobuflisted
+    nnoremap <buffer> q :pclose<cr>
 
     " return to original window
     wincmd p
 
     " restore position
-    normal! `xzt``
+    normal! `Xt``
+
+    " clear mark
+    normal mX
+
+    call vice#standard_issue#signature_enable()
 endf

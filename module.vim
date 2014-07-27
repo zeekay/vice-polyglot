@@ -29,6 +29,7 @@
     au BufNewFile,BufRead *.json setl filetype=json
     au BufNewFile,BufRead *.less setl filetype=less
     au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs,*.hogan,*.hulk,*.hjs call vice#polyglot#mustache() | setl filetype=html syntax=mustache
+    au BufNewFile,BufRead *.moon setl filetype=moon
     au BufNewFile,BufRead *.sass setl filetype=sass
     au BufNewFile,BufRead *.sbt,*.scala setl filetype=scala
     au BufNewFile,BufRead *.scala.html call vice#polyglot#play2html() | setl filetype=html syntax=play2-html
@@ -97,6 +98,11 @@ call vice#Extend({
         \ 'less': [
             \ 'github:groenewege/vim-less',
         \ ],
+        \ 'lua': [
+            \ 'github:xolox/vim-misc',
+            \ 'github:xolox/vim-lua-ftplugin',
+            \ 'github:xolox/vim-lua-inspect',
+        \ ],
         \ 'lua\|ruby\|sh\|vim\|zsh': [
             \ 'github:tpope/vim-endwise',
         \ ],
@@ -106,6 +112,9 @@ call vice#Extend({
         \ ],
         \ 'mustache': [
             \ 'github:mustache/vim-mustache-handlebars',
+        \ ],
+        \ 'moon': [
+            \ 'github:leafo/moonscript-vim',
         \ ],
         \ 'nginx': [
             \ 'github:evanmiller/nginx-vim-syntax',

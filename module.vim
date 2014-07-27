@@ -169,8 +169,8 @@ call vice#Extend({
     au FileType go nnoremap <buffer> <Leader>gi <Plug>(go-info)
     au FileType go nnoremap <buffer> <Leader>gv <Plug>(go-doc-vertical)
     au FileType go nnoremap <buffer> <leader>b  <Plug>(go-build)
-    au FileType go nnoremap <buffer> <leader>r  <Plug>(go-run)
     au FileType go nnoremap <buffer> <leader>t  <Plug>(go-test)
+    au FileType go nnoremap <buffer> <leader>r  :call vice#polyglot#run_file('go run')<cr>
 " }}}
 
 " Haskell {{{

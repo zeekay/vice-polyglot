@@ -201,6 +201,7 @@ call vice#Extend({
                          \ hi link javaScriptPrototype Text
 
     au FileType javascript command! -buffer Uglify silent! :%!uglifyjs
+    au FileType javascript nnoremap <buffer> <leader>r :call vice#polyglot#run_file('node')<cr>
 " }}}
 
 " JSON {{{

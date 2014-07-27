@@ -146,7 +146,7 @@ call vice#Extend({
     au FileType coffee setl foldmethod=indent nofoldenable
     au FileType coffee setl nosmartindent
 
-    au FileType coffee nnoremap <buffer> <leader>r :call vice#polyglot#run('coffee -s')<cr>
+    au FileType coffee nnoremap <buffer> <leader>r :call vice#polyglot#run_stdin('coffee -s')<cr>
     au FileType coffee nnoremap <buffer> <leader>c :CoffeeCompile vert<cr>
     au FileType coffee nnoremap <buffer> <leader>t :!cake test<cr>
 
@@ -182,7 +182,7 @@ call vice#Extend({
     au FileType haskell nnoremap <buffer> <leader>hc :HdevtoolsClear<CR>
     au FileType haskell nnoremap <buffer> <leader>hi :HdevtoolsInfo<CR>
     au FileType haskell nnoremap <buffer> <leader>ht :HdevtoolsType<CR>
-    au FileType haskell nnoremap <buffer> <leader>r :call vice#polyglot#run('runhaskell')<cr>
+    au FileType haskell nnoremap <buffer> <leader>r :call vice#polyglot#run_stdin('runhaskell')<cr>
     au FileType haskell setl formatprg=pointfree
 
     let g:haddock_browser = "open"
@@ -206,6 +206,11 @@ call vice#Extend({
 " JSON {{{
     au FileType json setl nobomb
     au FileType json setl conceallevel=0
+" }}}
+
+" Lua/Moonscript {{{
+    au FileType lua  nnoremap <buffer> <leader>r :call vice#polyglot#run_stdin('lua')<cr>
+    au FileType moon nnoremap <buffer> <leader>r :call vice#polyglot#run_file('moon')<cr>
 " }}}
 
 " Markdown {{{

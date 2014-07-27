@@ -64,15 +64,8 @@ func! vice#polyglot#go()
     endfor
 endf
 
-func! vice#polyglot#run(cmd)
+func! vice#polyglot#run_stdin(cmd)
     call vice#standard_issue#signature_disable()
-
-    " Store signature setting if necessary
-    let sig_enabled = 0
-    if exists('b:sig_enabled')
-        let sig_enabled = b:sig_enabled
-        let b:sig_enabled = 0
-    endif
 
     " save position
     normal! HmX``
@@ -113,4 +106,34 @@ func! vice#polyglot#run(cmd)
     normal mX
 
     call vice#standard_issue#signature_enable()
+endf
+
+func! vice#polyglot#run_file(cmd)
+    " Save as temporary file
+    let path = fnamemodify(resolve(expand('%:p')), ':h')
+    let filename = expand('%:t')
+    let tmp_filename = path.'/'.'tmp-'.filename
+    exe 'write '.tmp_filename
+
+    " open preview window
+    botright pedit [Run]
+
+    " switch to preview window
+    wincmd p
+
+    " Run command passign temporary file as
+    silent! exe '%!'.a:cmd.' '.tmp_filename
+
+    " set some modes
+    setl ro
+    setl buftype=nofile
+    setl bufhidden=hide
+    setl nobuflisted
+    nnoremap <buffer> q :pclose<cr>
+
+    " return to original window
+    wincmd p
+
+    " Delete temporary file
+    call delete(tmp_filename)
 endf

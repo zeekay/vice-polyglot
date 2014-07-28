@@ -175,13 +175,11 @@ call vice#Extend({
 
 " Haskell {{{
     au FileType haskell call vice#ForceActivateAddons([
-        \ 'github:bitc/vim-hdevtools',
-        \ 'github:eagletmt/ghcmod-vim',
         \ 'github:wlangstroth/vim-haskell',
+        \ 'github:eagletmt/ghcmod-vim',
     \ ])
-    au FileType haskell nnoremap <buffer> <leader>hc :HdevtoolsClear<CR>
-    au FileType haskell nnoremap <buffer> <leader>hi :HdevtoolsInfo<CR>
-    au FileType haskell nnoremap <buffer> <leader>ht :HdevtoolsType<CR>
+    au FileType haskell nnoremap <buffer> <leader>c :GhcModTypeClear<CR>
+    au FileType haskell nnoremap <buffer> <leader>t :GhcModType<CR>
     au FileType haskell nnoremap <buffer> <leader>r :call vice#polyglot#run_stdin('runhaskell')<cr>
     au FileType haskell setl formatprg=pointfree
 

@@ -2,27 +2,6 @@ func! vice#polyglot#bebop_reload()
     au InsertLeave * :w!
 endf
 
-func! vice#polyglot#clojure()
-    if exists('g:vice_polyglot_clojure_loaded') | return | endif
-    let g:vice_polyglot_clojure_loaded = 1
-endf
-
-func! vice#polyglot#play2html()
-    if exists('g:vice_polyglot_play2html_loaded') | return | endif
-    let g:vice_polyglot_play2html_loaded = 1
-
-    call vice#ForceActivateAddon('github:othree/html5.vim')
-    call vice#ForceActivateAddon('github:derekwyatt/vim-scala')
-    call vice#ForceActivateAddon('github:gre/play2vim')
-endf
-
-func! vice#polyglot#mustache()
-    if exists('g:vice_polyglot_mustache_loaded') | return | endif
-    let g:vice_polyglot_mustache_loaded = 1
-
-    call vice#ForceActivateAddon('github:mustache/vim-mustache-handlebars')
-endf
-
 let g:go_tools = {
     \ 'errcheck':  'github.com/kisielk/errcheck',
     \ 'gocode':    'github.com/nsf/gocode',

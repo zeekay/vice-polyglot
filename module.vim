@@ -38,10 +38,10 @@ endif
     au BufNewFile,BufRead *.json                        setl filetype=json
     au BufNewFile,BufRead *.less                        setl filetype=less
     au BufNewFile,BufRead *.moon                        setl filetype=moon
-    au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs setl filetype=html syntax=mustache | call vice#polyglot#mustache()
+    au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs setl filetype=html syntax=mustache | call vice#ForceActivateAddon('github:mustache/vim-mustache-handlebars')
     au BufNewFile,BufRead *.sass                        setl filetype=sass
     au BufNewFile,BufRead *.sbt,*.scala                 setl filetype=scala
-    au BufNewFile,BufRead *.scala.html                  setl filetype=html syntax=play2-html | call vice#polyglot#play2html()
+    au BufNewFile,BufRead *.scala.html                  setl filetype=html syntax=play2-html | call vice#ForceActivateAddons(['github:derekwyatt/vim-scala', 'github:gre/play2vim'])
     au BufNewFile,BufRead *.scss                        setl filetype=scss
     au BufNewFile,BufRead *.styl                        setl filetype=stylus
     au BufNewFile,BufRead *.{brainfuck,bf}              setl filetype=brainfuck
@@ -117,9 +117,6 @@ call vice#Extend({
             \ 'github:zeekay/vim-instant-markdown',
             \ 'github:tpope/vim-markdown',
         \ ],
-        \ 'mustache': [
-            \ 'github:mustache/vim-mustache-handlebars',
-        \ ],
         \ 'moon': [
             \ 'github:leafo/moonscript-vim',
         \ ],
@@ -149,10 +146,6 @@ call vice#Extend({
         \ ],
     \ },
 \ })
-
-" Clojure {{{
-    au FileType clojure call vice#polyglot#clojure()
-" }}}
 
 " CoffeeScript {{{
     au FileType coffee setl foldmethod=indent nofoldenable

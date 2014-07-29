@@ -1,3 +1,11 @@
+if !exists('g:vice.polyglot')
+    let g:vice.polyglot = {'enable_ghcmod': 0}
+endif
+
+if !exists('g:vice.polyglot.enable_ghcmod')
+    let g:vice.polyglot.enable_ghcmod = 0
+endif
+
 " Indent {{{
     au FileType xml,xhtml setl shiftwidth=4
     au FileType css,html,htmldjango,coffee,haml,stylus,jade,javascript setl shiftwidth=2
@@ -177,6 +185,24 @@ call vice#Extend({
     au FileType haskell call vice#ForceActivateAddons([
         \ 'github:wlangstroth/vim-haskell',
     \ ])
+
+    au FileType haskell nnoremap <buffer> <leader>r :call vice#polyglot#run_stdin('runhaskell')<cr>
+
+    if g:vice.polyglot.enable_ghcmod
+        au FileType haskell call vice#ForceActivateAddons([
+            \ 'github:eagletmt/ghcmod-vim',
+        \ ])
+        au FileType haskell nnoremap <buffer> tc :GhcModTypeClear<cr>
+        au FileType haskell nnoremap <buffer> te :GhcModExpand<cr>
+        au FileType haskell nnoremap <buffer> ti :GhcModInfo<cr>
+        au FileType haskell nnoremap <buffer> tn :GhcModTypeInsert<cr>
+        au FileType haskell nnoremap <buffer> tt :GhcModType<cr>
+
+        au BufWritePost *.hs GhcModCheckAndLintAsync
+
+        let g:ghcmod_hlint_options = ['--ignore=Redundant $']
+        let g:syntastic_haskell_checkers = []
+    endif
 " }}}
 
 " HTML {{{

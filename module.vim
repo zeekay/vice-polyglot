@@ -199,6 +199,7 @@ call vice#Extend({
         au FileType haskell nnoremap <buffer> tt :GhcModType<cr>
 
         au BufWritePost *.hs GhcModCheckAndLintAsync
+        au CursorMoved *.hs GhcModTypeClear
 
         let g:ghcmod_hlint_options = ['--ignore=Redundant $']
         let g:syntastic_haskell_checkers = []

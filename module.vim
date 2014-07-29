@@ -28,26 +28,27 @@ endif
 
 
 " Detect filetypes {{{
-    au BufNewFile,BufRead *.as setl filetype=actionscript
-    au BufNewFile,BufRead *.bats call vice#ForceActivateAddon('github:vim-scripts/bats.vim') | setl filetype=bats syntax=sh
-    au BufNewFile,BufRead *.coffee,Cakefile call vice#ForceActivateAddon('github:zeekay/vim-cake') | setl filetype=coffee
-    au BufNewFile,BufRead *.go setl filetype=go
-    au BufNewFile,BufRead *.haml setl filetype=haml
-    au BufNewFile,BufRead *.jade setl filetype=jade
-    au BufNewFile,BufRead *.json setl filetype=json
-    au BufNewFile,BufRead *.less setl filetype=less
-    au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs,*.hogan,*.hulk,*.hjs call vice#polyglot#mustache() | setl filetype=html syntax=mustache
-    au BufNewFile,BufRead *.moon setl filetype=moon
-    au BufNewFile,BufRead *.sass setl filetype=sass
-    au BufNewFile,BufRead *.sbt,*.scala setl filetype=scala
-    au BufNewFile,BufRead *.scala.html call vice#polyglot#play2html() | setl filetype=html syntax=play2-html
-    au BufNewFile,BufRead *.scss setl filetype=scss
-    au BufNewFile,BufRead *.styl setl filetype=stylus
-    au BufNewFile,BufRead *.{brainfuck,bf} setl filetype=brainfuck
-    au BufNewFile,BufRead *.{ex,exs} setl filetype=elixir
-    au BufNewFile,BufRead *.{md,mkd,mkdn,mark*} setl filetype=markdown
-    au BufNewFile,BufRead /etc/nginx/* setl filetype=nginx
-    au BufNewFile,BufRead /etc/pmta/config setl filetype=config
+    au BufNewFile,BufRead *.as                          setl filetype=actionscript
+    au BufNewFile,BufRead *.bats                        setl filetype=bats syntax=sh | call vice#ForceActivateAddon('github:vim-scripts/bats.vim')
+    au BufNewFile,BufRead *.coffee,Cakefile             setl filetype=coffee | call vice#ForceActivateAddon('github:zeekay/vim-cake')
+    au BufNewFile,BufRead *.go                          setl filetype=go
+    au BufNewFile,BufRead *.haml                        setl filetype=haml
+    au BufNewFile,BufRead *.idr                         setl filetype=idris
+    au BufNewFile,BufRead *.jade                        setl filetype=jade
+    au BufNewFile,BufRead *.json                        setl filetype=json
+    au BufNewFile,BufRead *.less                        setl filetype=less
+    au BufNewFile,BufRead *.moon                        setl filetype=moon
+    au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs setl filetype=html syntax=mustache | call vice#polyglot#mustache()
+    au BufNewFile,BufRead *.sass                        setl filetype=sass
+    au BufNewFile,BufRead *.sbt,*.scala                 setl filetype=scala
+    au BufNewFile,BufRead *.scala.html                  setl filetype=html syntax=play2-html | call vice#polyglot#play2html()
+    au BufNewFile,BufRead *.scss                        setl filetype=scss
+    au BufNewFile,BufRead *.styl                        setl filetype=stylus
+    au BufNewFile,BufRead *.{brainfuck,bf}              setl filetype=brainfuck
+    au BufNewFile,BufRead *.{ex,exs}                    setl filetype=elixir
+    au BufNewFile,BufRead *.{md,mkd,mkdn,mark*}         setl filetype=markdown
+    au BufNewFile,BufRead /etc/nginx/*                  setl filetype=nginx
+    au BufNewFile,BufRead /etc/pmta/config              setl filetype=config
 " }}}
 
 call vice#Extend({
@@ -86,6 +87,9 @@ call vice#Extend({
         \ 'html\|xhtml\|xml': [
             \ 'github:zeekay/vim-html2jade',
             \ 'github:othree/html5.vim',
+        \ ],
+        \ 'idris': [
+            \ 'github:idris-hackers/idris-vim',
         \ ],
         \ 'jade': [
             \ 'github:digitaltoad/vim-jade',

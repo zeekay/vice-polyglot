@@ -178,8 +178,9 @@ call vice#Extend({
         \ 'github:wlangstroth/vim-haskell',
         \ 'github:eagletmt/ghcmod-vim',
     \ ])
-    au FileType haskell nnoremap <buffer> <leader>c :GhcModTypeClear<CR>
-    au FileType haskell nnoremap <buffer> <leader>t :GhcModType<CR>
+    au FileType haskell nnoremap <buffer> <leader>c :GhcModTypeClear<cr>
+    au FileType haskell nnoremap <buffer> <leader>i :GhcModInfo<cr>
+    au FileType haskell nnoremap <buffer> <leader>t :GhcModType<cr>
     au FileType haskell nnoremap <buffer> <leader>r :call vice#polyglot#run_stdin('runhaskell')<cr>
     au FileType haskell setl formatprg=pointfree
 

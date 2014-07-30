@@ -189,13 +189,14 @@ call vice#Extend({
         au FileType haskell call vice#ForceActivateAddons([
             \ 'github:eagletmt/ghcmod-vim',
         \ ])
+
         au FileType haskell nnoremap <buffer> te :GhcModExpand<cr>
         au FileType haskell nnoremap <buffer> ti :GhcModInfo<cr>
         au FileType haskell nnoremap <buffer> tn :GhcModTypeInsert<cr>
         au FileType haskell nnoremap <buffer> tt :GhcModType<cr>
 
         au BufWritePost *.hs GhcModCheckAndLintAsync
-        au CursorMoved  *.hs GhcModTypeClear
+        au CursorMoved  *.hs call vice#polyglot#ghcmod_clear_type()
 
         let g:ghcmod_hlint_options = ['--ignore=Redundant $']
         let g:syntastic_haskell_checkers = []

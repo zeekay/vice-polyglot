@@ -116,3 +116,9 @@ func! vice#polyglot#run_file(cmd)
     " Delete temporary file
     call delete(tmp_filename)
 endf
+
+func! vice#polyglot#ghcmod_clear_type()
+    if exists('b:ghcmod_type')
+        GhcModTypeClear
+    endif
+endf

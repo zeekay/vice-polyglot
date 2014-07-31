@@ -151,7 +151,7 @@ call vice#Extend({
     au FileType coffee setl foldmethod=indent nofoldenable
     au FileType coffee setl nosmartindent
 
-    au FileType coffee nnoremap <buffer> <leader>r :call vice#polyglot#run_stdin('coffee -s')<cr>
+    au FileType coffee nnoremap <buffer> <leader>r :call vice#polyglot#run('coffee -s', 'stdin')<cr>
     au FileType coffee nnoremap <buffer> <leader>c :CoffeeCompile vert<cr>
     au FileType coffee nnoremap <buffer> <leader>t :!cake test<cr>
 
@@ -175,7 +175,7 @@ call vice#Extend({
     au FileType go nnoremap <buffer> <Leader>gv <Plug>(go-doc-vertical)
     au FileType go nnoremap <buffer> <leader>b  <Plug>(go-build)
     au FileType go nnoremap <buffer> <leader>t  <Plug>(go-test)
-    au FileType go nnoremap <buffer> <leader>r  :call vice#polyglot#run_file('go run')<cr>
+    au FileType go nnoremap <buffer> <leader>r  :call vice#polyglot#run('go run')<cr>
 " }}}
 
 " Haskell {{{
@@ -183,20 +183,20 @@ call vice#Extend({
         \ 'github:wlangstroth/vim-haskell',
     \ ])
 
-    au FileType haskell nnoremap <buffer> <leader>r :call vice#polyglot#run_stdin('runhaskell')<cr>
+    au FileType haskell nnoremap <buffer> <leader>r :call vice#polyglot#run('runhaskell', 'stdin')<cr>
 
     if g:vice.polyglot.enable_ghcmod
         au FileType haskell call vice#ForceActivateAddons([
             \ 'github:eagletmt/ghcmod-vim',
         \ ])
 
-        au FileType haskell nnoremap <buffer> te :GhcModExpand<cr>
-        au FileType haskell nnoremap <buffer> ti :GhcModInfo<cr>
-        au FileType haskell nnoremap <buffer> tn :GhcModTypeInsert<cr>
-        au FileType haskell nnoremap <buffer> tt :GhcModType<cr>
+        au FileType haskell nnoremap <buffer> te :call vice#polyglot#ghcmod_expand()<cr>
+        au FileType haskell nnoremap <buffer> ti :call vice#polyglot#ghcmod_info()<cr>
+        au FileType haskell nnoremap <buffer> tn :call vice#polyglot#ghcmod_type_insert()<cr>
+        au FileType haskell nnoremap <buffer> tt :call vice#polyglot#ghcmod_type()<cr>
 
-        au BufWritePost *.hs GhcModCheckAndLintAsync
-        au CursorMoved  *.hs call vice#polyglot#ghcmod_clear_type()
+        au BufWritePost *.hs call vice#polyglot#ghcmod_check_and_lint()
+        au CursorMoved  *.hs call vice#polyglot#ghcmod_type_clear()
 
         let g:ghcmod_hlint_options = ['--ignore=Redundant $']
         let g:syntastic_haskell_checkers = []
@@ -216,7 +216,7 @@ call vice#Extend({
                          \ hi link javaScriptPrototype Text
 
     au FileType javascript command! -buffer Uglify silent! :%!uglifyjs
-    au FileType javascript nnoremap <buffer> <leader>r :call vice#polyglot#run_file('node')<cr>
+    au FileType javascript nnoremap <buffer> <leader>r :call vice#polyglot#run('node')<cr>
 " }}}
 
 " JSON {{{
@@ -225,8 +225,8 @@ call vice#Extend({
 " }}}
 
 " Lua/Moonscript {{{
-    au FileType lua  nnoremap <buffer> <leader>r :call vice#polyglot#run_stdin('lua')<cr>
-    au FileType moon nnoremap <buffer> <leader>r :call vice#polyglot#run_file('moon')<cr>
+    au FileType lua  nnoremap <buffer> <leader>r :call vice#polyglot#run('lua', 'stdin')<cr>
+    au FileType moon nnoremap <buffer> <leader>r :call vice#polyglot#run('moon', 'stdin')<cr>
 " }}}
 
 " Markdown {{{

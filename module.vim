@@ -39,6 +39,7 @@ endif
     au BufNewFile,BufRead *.less                        setl filetype=less
     au BufNewFile,BufRead *.moon                        setl filetype=moon
     au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs setl filetype=html syntax=mustache | call vice#ForceActivateAddon('github:mustache/vim-mustache-handlebars')
+    au BufNewFile,BufRead *.purs                        setl filetype=purescript
     au BufNewFile,BufRead *.sass                        setl filetype=sass
     au BufNewFile,BufRead *.sbt,*.scala                 setl filetype=scala
     au BufNewFile,BufRead *.scala.html                  setl filetype=html syntax=play2-html | call vice#ForceActivateAddons(['github:derekwyatt/vim-scala', 'github:gre/play2vim'])
@@ -126,6 +127,13 @@ call vice#Extend({
         \ 'perl': [
             \ 'github:c9s/perlomni.vim',
         \ ],
+        \ 'play2-html': [
+            \ 'github:derekwyatt/vim-scala',
+            \ 'github:gre/play2vim',
+        \ ],
+        \ 'purescript': [
+            \ 'github:raichoo/purescript-vim',
+        \ ],
         \ 'python': [
             \ 'github:hynek/vim-python-pep8-indent',
             \ 'github:hdima/python-syntax',
@@ -133,10 +141,6 @@ call vice#Extend({
         \ ],
         \ 'scala': [
             \ 'github:derekwyatt/vim-scala',
-        \ ],
-        \ 'play2-html': [
-            \ 'github:derekwyatt/vim-scala',
-            \ 'github:gre/play2vim',
         \ ],
         \ 'scss': [
             \ 'github:cakebaker/scss-syntax.vim',

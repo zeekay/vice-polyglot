@@ -11,7 +11,7 @@ let g:go_tools = {
     \ 'oracle':    'code.google.com/p/go.tools/cmd/oracle',
 \ }
 
-func! vice#polyglot#install_go_tools()
+func! vice#polyglot#install_go_tools(...)
     let urls = []
 
     if len(a:000) > 0

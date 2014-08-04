@@ -58,8 +58,7 @@ func! vice#polyglot#run(cmd, ...)
     " open preview window
     botright pedit [Run]
 
-    " run command
-    if len(a:000) > 1 && a:1 == 'stdin'
+    if a:0 == 1 && a:1 == 'stdin'
         call vice#polyglot#run_stdin(a:cmd)
     else
         call vice#polyglot#run_file(a:cmd)

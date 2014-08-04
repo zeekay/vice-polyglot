@@ -1,5 +1,5 @@
 if !exists('g:vice.polyglot')
-    let g:vice.polyglot = {'enable_ghcmod': 0}
+    let g:vice.polyglot = {}
 endif
 
 if !exists('g:vice.polyglot.enable_ghcmod')

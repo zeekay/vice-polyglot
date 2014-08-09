@@ -76,7 +76,7 @@ func! vice#polyglot#run_stdin(cmd)
     let lines = getbufline(bufnr('%'), 1, '$')
 
     " switch to preview window
-    wincmd p
+    silent! wincmd P
 
     " put bufferlines
     call append(0, lines)
@@ -110,10 +110,10 @@ func! vice#polyglot#run_file(cmd)
     exe 'write '.tmp_filename
 
     " switch to preview window
-    wincmd p
+    silent! wincmd P
 
     " Run command passign temporary file as
-    silent! exe '%!'.a:cmd.' '.shellescape(tmp_filename)
+    exe '%!'.a:cmd.' '.shellescape(tmp_filename)
 
     " set some modes
     setl ro

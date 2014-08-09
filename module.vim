@@ -230,7 +230,7 @@ call vice#Extend({
 
 " Lua/Moonscript {{{
     au FileType lua  nnoremap <buffer> <leader>r :call vice#polyglot#run('lua', 'stdin')<cr>
-    au FileType moon nnoremap <buffer> <leader>r :call vice#polyglot#run('moon', 'stdin')<cr>
+    au FileType moon nnoremap <buffer> <leader>r :call vice#polyglot#run('moon')<cr>
 " }}}
 
 " Markdown {{{

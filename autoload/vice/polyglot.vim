@@ -10,7 +10,6 @@ let g:go_tools = {
     \ 'goimports': 'github.com/bradfitz/goimports',
     \ 'golint':    'github.com/golang/lint/golint',
     \ 'oracle':    'code.google.com/p/go.tools/cmd/oracle',
-    \ 'vet':       'code.google.com/p/go.tools/cmd/vet',
 \ }
 
 func! vice#polyglot#install_go_tools(...)
@@ -35,6 +34,9 @@ func! vice#polyglot#go()
     " This will try to install any missing tools
     let gopath = expand('~/go')
     let cmds = keys(g:go_tools)
+
+    let $GOPATH = gopath
+    let $GOBIN  = gopath.'/bin'
 
     for cmd in cmds
         let bin = gopath.'/bin/'.cmd

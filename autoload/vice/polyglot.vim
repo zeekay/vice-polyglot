@@ -6,9 +6,11 @@ let g:go_tools = {
     \ 'errcheck':  'github.com/kisielk/errcheck',
     \ 'gocode':    'github.com/nsf/gocode',
     \ 'godef':     'code.google.com/p/rog-go/exp/cmd/godef',
+    \ 'godoc':     'code.google.com/p/go.tools/cmd/godoc',
     \ 'goimports': 'github.com/bradfitz/goimports',
     \ 'golint':    'github.com/golang/lint/golint',
     \ 'oracle':    'code.google.com/p/go.tools/cmd/oracle',
+    \ 'vet':       'code.google.com/p/go.tools/cmd/vet',
 \ }
 
 func! vice#polyglot#install_go_tools(...)

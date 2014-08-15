@@ -35,6 +35,8 @@ func! vice#polyglot#go()
     let gopath = expand('~/go')
     let cmds = keys(g:go_tools)
 
+    let old_gopath = $GOPATH
+    let old_gobin  = $GOBIN
     let $GOPATH = gopath
     let $GOBIN  = gopath.'/bin'
 
@@ -45,6 +47,9 @@ func! vice#polyglot#go()
         endif
         exe 'let g:go_'.cmd.'_bin="'.bin.'"'
     endfor
+
+    let $GOPATH = old_gopath
+    let $GOBIN  = old_gobin
 endf
 
 func! vice#polyglot#run(cmd, ...)

@@ -48,7 +48,8 @@ endif
     au BufNewFile,BufRead *.{brainfuck,bf}              setl filetype=brainfuck
     au BufNewFile,BufRead *.{ex,exs}                    setl filetype=elixir
     au BufNewFile,BufRead *.{md,mkd,mkdn,mark*}         setl filetype=markdown
-    au BufNewFile,BufRead /etc/nginx/*                  setl filetype=nginx
+    au BufNewFile,BufRead nginx.conf,/etc/nginx/*       setl filetype=nginx
+    au BufNewFile,BufRead /usr/local/etc/nginx/*        setl filetype=nginx
     au BufNewFile,BufRead /etc/pmta/config              setl filetype=config
 " }}}
 

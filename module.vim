@@ -167,16 +167,14 @@ call vice#Extend({
 
 " Go {{{
     let g:go_fmt_autosave = 0
-    let g:go_disable_autoinstall = 1
 
-    au FileType go call vice#polyglot#go()
     au FileType go nnoremap <buffer> gd <Plug>(go-def)
     au FileType go nnoremap <buffer> <Leader>ds <Plug>(go-def-split)
     au FileType go nnoremap <buffer> <Leader>dt <Plug>(go-def-tab)
     au FileType go nnoremap <buffer> <Leader>dv <Plug>(go-def-vertical)
     au FileType go nnoremap <buffer> <Leader>gb <Plug>(go-doc-browser)
-    au FileType go nnoremap <buffer> <Leader>gd <Plug>(go-doc)
-    au FileType go nnoremap <buffer> <Leader>gi <Plug>(go-info)
+    au FileType go nnoremap <buffer> <Leader>d <Plug>(go-doc)
+    au FileType go nnoremap <buffer> <Leader>i <Plug>(go-info)
     au FileType go nnoremap <buffer> <Leader>gv <Plug>(go-doc-vertical)
     au FileType go nnoremap <buffer> <leader>b  <Plug>(go-build)
     au FileType go nnoremap <buffer> <leader>t  <Plug>(go-test)

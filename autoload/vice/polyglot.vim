@@ -2,56 +2,6 @@ func! vice#polyglot#bebop_reload()
     au InsertLeave * :w!
 endf
 
-let g:go_tools = {
-    \ 'errcheck':  'github.com/kisielk/errcheck',
-    \ 'gocode':    'github.com/nsf/gocode',
-    \ 'godef':     'code.google.com/p/rog-go/exp/cmd/godef',
-    \ 'godoc':     'code.google.com/p/go.tools/cmd/godoc',
-    \ 'goimports': 'github.com/bradfitz/goimports',
-    \ 'golint':    'github.com/golang/lint/golint',
-    \ 'oracle':    'code.google.com/p/go.tools/cmd/oracle',
-\ }
-
-func! vice#polyglot#install_go_tools(...)
-    let urls = []
-
-    if len(a:000) > 0
-        for cmd in a:000
-            call add(urls, g:go_tools[cmd])
-        endfor
-    else
-        let urls = values(g:go_tools)
-    endif
-
-    for url in urls
-        let cmd = 'go get -u '.url
-        echo cmd
-        silent! exe '!'.cmd
-    endfor
-endf
-
-func! vice#polyglot#go()
-    " This will try to install any missing tools
-    let gopath = expand('~/go')
-    let cmds = keys(g:go_tools)
-
-    let old_gopath = $GOPATH
-    let old_gobin  = $GOBIN
-    let $GOPATH = gopath
-    let $GOBIN  = gopath.'/bin'
-
-    for cmd in cmds
-        let bin = gopath.'/bin/'.cmd
-        if !filereadable(bin)
-            call vice#polyglot#install_go_tools(cmd)
-        endif
-        exe 'let g:go_'.cmd.'_bin="'.bin.'"'
-    endfor
-
-    let $GOPATH = old_gopath
-    let $GOBIN  = old_gobin
-endf
-
 func! vice#polyglot#run(cmd, ...)
     if !executable(split(a:cmd)[0])
         echoerr 'Please install '.a:cmd

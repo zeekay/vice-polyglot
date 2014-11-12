@@ -7,8 +7,8 @@ if !exists('g:vice.polyglot.enable_ghcmod')
 endif
 
 " Indent {{{
-    au FileType xml,xhtml setl shiftwidth=4
-    au FileType css,html,htmldjango,less,coffee,haml,stylus,jade,javascript setl shiftwidth=2
+    au FileType xml,xhtml,htmldjango setl shiftwidth=4
+    au FileType css,html,less,coffee,haml,stylus,jade,javascript setl shiftwidth=2
 " }}}
 
 " Enable omnicomplete {{{
@@ -40,6 +40,7 @@ endif
     au BufNewFile,BufRead *.moon                        setl filetype=moon
     au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs setl filetype=html syntax=mustache | call vice#ForceActivateAddon('github:mustache/vim-mustache-handlebars')
     au BufNewFile,BufRead *.purs                        setl filetype=purescript
+    au BufRead,BufNewFile *.rs                          setl filetype=rust
     au BufNewFile,BufRead *.sass                        setl filetype=sass
     au BufNewFile,BufRead *.sbt,*.scala                 setl filetype=scala
     au BufNewFile,BufRead *.scala.html                  setl filetype=html syntax=play2-html | call vice#ForceActivateAddons(['github:derekwyatt/vim-scala', 'github:gre/play2vim'])
@@ -139,6 +140,10 @@ call vice#Extend({
             \ 'github:hynek/vim-python-pep8-indent',
             \ 'github:hdima/python-syntax',
             \ 'github:jmcantrell/vim-virtualenv',
+        \ ],
+        \ 'rust': [
+            \ 'github:wting/rust.vim',
+            \ 'github:ebfe/vim-racer',
         \ ],
         \ 'scala': [
             \ 'github:derekwyatt/vim-scala',

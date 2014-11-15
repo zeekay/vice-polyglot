@@ -143,7 +143,6 @@ call vice#Extend({
         \ ],
         \ 'rust': [
             \ 'github:wting/rust.vim',
-            \ 'github:ebfe/vim-racer',
         \ ],
         \ 'scala': [
             \ 'github:derekwyatt/vim-scala',
@@ -171,7 +170,7 @@ call vice#Extend({
 " }}}
 
 " Go {{{
-    let g:go_fmt_autosave = 0
+    let g:go_fmt_autosave = 1
 
     au FileType go nnoremap <buffer> gd <Plug>(go-def)
     au FileType go nnoremap <buffer> <Leader>ds <Plug>(go-def-split)

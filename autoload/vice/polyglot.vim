@@ -126,3 +126,8 @@ func! vice#polyglot#ghcmod_check_and_lint()
         GhcModCheckAndLintAsync
     endif
 endf
+
+func! vice#polyglot#rust()
+    setlocal omnifunc=racer#Complete
+    nnoremap <buffer> gd :call racer#JumpToDefinition()<CR>
+endf

@@ -7,7 +7,7 @@ if !exists('g:vice.polyglot.enable_ghcmod')
 endif
 
 " Indent {{{
-    au FileType xml,xhtml,htmldjango setl shiftwidth=4
+    au FileType rust,xml,xhtml,htmldjango setl shiftwidth=4
     au FileType css,html,less,coffee,haml,stylus,jade,javascript setl shiftwidth=2
 " }}}
 

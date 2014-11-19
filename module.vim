@@ -88,8 +88,8 @@ call vice#Extend({
             \ 'github:juanpabloaj/help.vim',
 	    \ ],
         \ 'html\|xhtml\|xml': [
-            \ 'github:zeekay/vim-html2jade',
             \ 'github:othree/html5.vim',
+            \ 'github:zeekay/vim-html2jade',
         \ ],
         \ 'idris': [
             \ 'github:idris-hackers/idris-vim',

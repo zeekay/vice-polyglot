@@ -89,6 +89,7 @@ call vice#Extend({
 	    \ ],
         \ 'html\|xhtml\|xml': [
             \ 'github:othree/html5.vim',
+            \ 'github:gregsexton/MatchTag',
             \ 'github:zeekay/vim-html2jade',
         \ ],
         \ 'idris': [

@@ -40,7 +40,7 @@ endif
     au BufNewFile,BufRead *.moon                        setl filetype=moon
     au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs setl filetype=html syntax=mustache | call vice#ForceActivateAddon('github:mustache/vim-mustache-handlebars')
     au BufNewFile,BufRead *.purs                        setl filetype=purescript
-    au BufRead,BufNewFile *.rs                          setl filetype=rust
+    au BufNewFile,BufRead *.rs                          setl filetype=rust
     au BufNewFile,BufRead *.sass                        setl filetype=sass
     au BufNewFile,BufRead *.sbt,*.scala                 setl filetype=scala
     au BufNewFile,BufRead *.scala.html                  setl filetype=html syntax=play2-html | call vice#ForceActivateAddons(['github:derekwyatt/vim-scala', 'github:gre/play2vim'])
@@ -49,9 +49,9 @@ endif
     au BufNewFile,BufRead *.{brainfuck,bf}              setl filetype=brainfuck
     au BufNewFile,BufRead *.{ex,exs}                    setl filetype=elixir
     au BufNewFile,BufRead *.{md,mkd,mkdn,mark*}         setl filetype=markdown
-    au BufNewFile,BufRead nginx.conf,/etc/nginx/*       setl filetype=nginx
-    au BufNewFile,BufRead /usr/local/etc/nginx/*        setl filetype=nginx
     au BufNewFile,BufRead /etc/pmta/config              setl filetype=config
+    au BufNewFile,BufRead /usr/local/etc/nginx/*        setl filetype=nginx
+    au BufNewFile,BufRead nginx.conf,/etc/nginx/*       setl filetype=nginx
 " }}}
 
 call vice#Extend({

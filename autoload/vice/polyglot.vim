@@ -1,7 +1,3 @@
-func! vice#polyglot#bebop_reload()
-    au InsertLeave * :w!
-endf
-
 func! vice#polyglot#run(cmd, ...)
     if !executable(split(a:cmd)[0])
         echoerr 'Please install '.a:cmd

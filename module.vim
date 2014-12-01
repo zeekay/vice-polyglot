@@ -250,7 +250,3 @@ call vice#Extend({
     au FileType python setlocal nosmartindent
     au FileType python setlocal nocindent
 " }}}
-
-" Stylus {{{
-    au FileType stylus call vice#polyglot#bebop_reload()
-" }}}

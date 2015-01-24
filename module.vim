@@ -29,6 +29,7 @@ endif
 
 " Detect filetypes {{{
     au BufNewFile,BufRead *.as                          setl filetype=actionscript
+    au BufNewFile,BufRead *.apib                        setl filetype=markdown
     au BufNewFile,BufRead *.bats                        setl filetype=bats syntax=sh | call vice#ForceActivateAddon('github:vim-scripts/bats.vim')
     au BufNewFile,BufRead *.coffee,Cakefile             setl filetype=coffee | call vice#ForceActivateAddon('github:zeekay/vim-cake')
     au BufNewFile,BufRead *.go                          setl filetype=go

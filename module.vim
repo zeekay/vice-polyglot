@@ -119,8 +119,8 @@ call vice#Extend({
             \ 'github:tpope/vim-endwise',
         \ ],
         \ 'markdown': [
+            \ 'github:gabrielelana/vim-markdown',
             \ 'github:zeekay/vim-instant-markdown',
-            \ 'github:tpope/vim-markdown',
         \ ],
         \ 'moon': [
             \ 'github:leafo/moonscript-vim',
@@ -240,6 +240,12 @@ call vice#Extend({
 
 " Markdown {{{
     au FileType markdown set textwidth=80
+    let g:markdown_include_jekyll_support = 1
+    let g:markdown_enable_folding = 0
+    let g:markdown_enable_mappings = 1
+    let g:markdown_enable_insert_mode_mappings = 0
+    let g:markdown_enable_insert_mode_leader_mappings = 0
+    let g:markdown_enable_spell_checking = 0
 " }}}
 
 " Python {{{

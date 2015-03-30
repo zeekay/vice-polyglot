@@ -29,7 +29,6 @@ endif
 
 " Detect filetypes {{{
     au BufNewFile,BufRead *.as                          setl filetype=actionscript
-    au BufNewFile,BufRead *.apib                        setl filetype=markdown
     au BufNewFile,BufRead *.bats                        setl filetype=bats syntax=sh | call vice#ForceActivateAddon('github:vim-scripts/bats.vim')
     au BufNewFile,BufRead *.coffee,Cakefile             setl filetype=coffee | call vice#ForceActivateAddon('github:zeekay/vim-cake')
     au BufNewFile,BufRead *.go                          setl filetype=go
@@ -62,6 +61,9 @@ call vice#Extend({
         \ ],
         \ 'brainfuck': [
            \ 'github:vim-scripts/brainfuck-syntax'
+        \ ],
+        \ 'c$\|lex\|yacc': [
+            \ 'justinmk/vim-syntax-extra',
         \ ],
         \ 'css\|sass\|scss\|stylus': [
             \ 'github:hail2u/vim-css3-syntax',
@@ -117,10 +119,6 @@ call vice#Extend({
         \ ],
         \ 'lua\|ruby\|sh\|vim\|zsh': [
             \ 'github:tpope/vim-endwise',
-        \ ],
-        \ 'markdown': [
-            \ 'github:gabrielelana/vim-markdown',
-            \ 'github:zeekay/vim-instant-markdown',
         \ ],
         \ 'moon': [
             \ 'github:leafo/moonscript-vim',
@@ -236,16 +234,6 @@ call vice#Extend({
 " Lua/Moonscript {{{
     au FileType lua  nnoremap <buffer> <leader>r :call vice#polyglot#run('lua', 'stdin')<cr>
     au FileType moon nnoremap <buffer> <leader>r :call vice#polyglot#run('moon')<cr>
-" }}}
-
-" Markdown {{{
-    au FileType markdown set textwidth=80
-    let g:markdown_include_jekyll_support = 1
-    let g:markdown_enable_folding = 0
-    let g:markdown_enable_mappings = 1
-    let g:markdown_enable_insert_mode_mappings = 1
-    let g:markdown_enable_insert_mode_leader_mappings = 0
-    let g:markdown_enable_spell_checking = 0
 " }}}
 
 " Python {{{

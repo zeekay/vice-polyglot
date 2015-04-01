@@ -63,7 +63,10 @@ call vice#Extend({
            \ 'github:vim-scripts/brainfuck-syntax'
         \ ],
         \ 'c$\|lex\|yacc': [
-            \ 'justinmk/vim-syntax-extra',
+            \ 'github:justinmk/vim-syntax-extra',
+        \ ],
+        \ 'cpp$': [
+            \ 'github:octol/vim-cpp-enhanced-highlight',
         \ ],
         \ 'css\|sass\|scss\|stylus': [
             \ 'github:hail2u/vim-css3-syntax',

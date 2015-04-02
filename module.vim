@@ -66,7 +66,7 @@ call vice#Extend({
             \ 'github:justinmk/vim-syntax-extra',
         \ ],
         \ 'cpp$': [
-            \ 'github:octol/vim-cpp-enhanced-highlight',
+            \ 'github:bbchung/clighter',
         \ ],
         \ 'css\|sass\|scss\|stylus': [
             \ 'github:hail2u/vim-css3-syntax',

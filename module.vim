@@ -8,7 +8,7 @@ endif
 
 " Indent {{{
     au FileType rust,xml,xhtml,htmldjango setl shiftwidth=4
-    au FileType css,html,less,coffee,haml,stylus,jade,javascript,yaml setl shiftwidth=2
+    au FileType css,html,less,coffee,haml,stylus,jade,javascript,javascript.jsx,yaml setl shiftwidth=2
 " }}}
 
 " Enable omnicomplete {{{
@@ -36,6 +36,8 @@ endif
     au BufNewFile,BufRead *.idr                         setl filetype=idris
     au BufNewFile,BufRead *.jade                        setl filetype=jade
     au BufNewFile,BufRead *.json                        setl filetype=json
+    au BufNewFile,BufRead *.jsx,*.tag                   let b:jsx_ext_found = 1
+    au BufNewFile,BufRead *.jsx,*.tag                   setl filetype=javascript.jsx
     au BufNewFile,BufRead *.less                        setl filetype=less
     au BufNewFile,BufRead *.moon                        setl filetype=moon
     au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs setl filetype=html syntax=mustache | call vice#ForceActivateAddon('github:mustache/vim-mustache-handlebars')
@@ -111,6 +113,9 @@ call vice#Extend({
         \ ],
         \ 'json': [
             \ 'github:elzr/vim-json',
+        \ ],
+        \ 'jsx': [
+            \ 'github:mxw/vim-jsx',
         \ ],
         \ 'less': [
             \ 'github:groenewege/vim-less',

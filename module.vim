@@ -109,7 +109,8 @@ call vice#Extend({
         \ 'javascript': [
             \ 'github:zeekay/vim-js2coffee',
             \ 'github:jelera/vim-javascript-syntax',
-            \ 'github:pangloss/vim-javascript',
+            \ 'github:lukaszb/vim-web-indent',
+            \ 'github:othree/javascript-libraries-syntax.vim',
         \ ],
         \ 'json': [
             \ 'github:elzr/vim-json',

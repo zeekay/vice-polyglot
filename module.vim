@@ -107,8 +107,8 @@ call vice#Extend({
             \ 'github:digitaltoad/vim-jade',
         \ ],
         \ 'javascript': [
+            \ 'github:jason0x43/vim-js-indent',
             \ 'github:jelera/vim-javascript-syntax',
-            \ 'github:lukaszb/vim-web-indent',
             \ 'github:othree/javascript-libraries-syntax.vim',
             \ 'github:zeekay/vim-js2coffee',
         \ ],

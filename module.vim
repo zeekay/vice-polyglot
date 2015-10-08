@@ -254,3 +254,7 @@ call vice#Extend({
     au FileType python setlocal nosmartindent
     au FileType python setlocal nocindent
 " }}}
+
+" Clighter {{{
+    let g:clighter_autostart = 0
+" }}}

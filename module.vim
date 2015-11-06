@@ -48,6 +48,7 @@ endif
     au BufNewFile,BufRead *.scala.html                  setl filetype=html syntax=play2-html | call vice#ForceActivateAddons(['github:derekwyatt/vim-scala', 'github:gre/play2vim'])
     au BufNewFile,BufRead *.scss                        setl filetype=scss
     au BufNewFile,BufRead *.styl                        setl filetype=stylus
+    au BufNewFile,BufRead *.ts                          setl filetype=typescript
     au BufNewFile,BufRead *.{brainfuck,bf}              setl filetype=brainfuck
     au BufNewFile,BufRead *.{ex,exs}                    setl filetype=elixir
     au BufNewFile,BufRead *.{md,mkd,mkdn,mark*}         setl filetype=markdown
@@ -82,6 +83,7 @@ call vice#Extend({
         \ ],
         \ 'coffee': [
             \ 'github:kchmck/vim-coffee-script',
+            \ 'github:othree/javascript-libraries-syntax.vim',
         \ ],
         \ 'elixir': [
             \ 'github:elixir-lang/vim-elixir',
@@ -108,7 +110,8 @@ call vice#Extend({
         \ ],
         \ 'javascript': [
             \ 'github:jason0x43/vim-js-indent',
-            \ 'github:jelera/vim-javascript-syntax',
+            \ 'github:othree/yajs.vim',
+            \ 'github:othree/es.next.syntax.vim',
             \ 'github:othree/javascript-libraries-syntax.vim',
             \ 'github:zeekay/vim-js2coffee',
         \ ],
@@ -162,6 +165,9 @@ call vice#Extend({
         \ 'stylus': [
             \ 'github:wavded/vim-stylus',
         \ ],
+        \ 'typescript': [
+            \ 'github:HerringtonDarkholme/yats.vim',
+        \ ],
     \ },
 \ })
 
@@ -173,9 +179,9 @@ call vice#Extend({
     au FileType coffee nnoremap <buffer> <leader>c :CoffeeCompile vert<cr>
     au FileType coffee nnoremap <buffer> <leader>t :!cake test<cr>
 
-    hi link coffeeFunction  Function
-    hi link coffeeMethod    Function
-    hi link coffeeObjAssign Statement
+    " hi link coffeeFunction  Function
+    " hi link coffeeMethod    Function
+    " hi link coffeeObjAssign Statement
 " }}}
 
 " Go {{{
@@ -224,15 +230,17 @@ call vice#Extend({
 " "}}}
 
 " Javascript {{{
-    au FileType javascript hi link javascriptBraces Text |
-                         \ hi link javascriptParens Text |
-                         \ hi link javaScriptOpSymbols Text |
-                         \ hi link javaScriptEndColons Text |
-                         \ hi link javaScriptExceptions Statement |
-                         \ hi link javaScriptPrototype Text
+    " au FileType javascript hi link javascriptBraces Text |
+    "                      \ hi link javascriptParens Text |
+    "                      \ hi link javaScriptOpSymbols Text |
+    "                      \ hi link javaScriptEndColons Text |
+    "                      \ hi link javaScriptExceptions Statement |
+    "                      \ hi link javaScriptPrototype Text
 
     au FileType javascript command! -buffer Uglify silent! :%!uglifyjs
     au FileType javascript nnoremap <buffer> <leader>r :call vice#polyglot#run('node')<cr>
+
+    let g:used_javascript_libs = 'backbone,chai,jquery,react,underscore'
 " }}}
 
 " JSON {{{

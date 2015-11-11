@@ -127,3 +127,11 @@ func! vice#polyglot#rust()
     setlocal omnifunc=racer#Complete
     nnoremap <buffer> gd :call racer#JumpToDefinition()<CR>
 endf
+
+func! vice#polyglot#uglify(bang)
+    if a:bang
+        silent! exe '%!uglifyjs --compress --mangle'
+    else
+        silent! exe '%!uglifyjs'
+    endif
+endf

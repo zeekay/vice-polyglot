@@ -237,7 +237,7 @@ call vice#Extend({
     "                      \ hi link javaScriptExceptions Statement |
     "                      \ hi link javaScriptPrototype Text
 
-    au FileType javascript command! -buffer Uglify silent! :%!uglifyjs
+    au FileType javascript command! -buffer -bang Uglify call vice#polyglot#uglify(<bang>0)
     au FileType javascript nnoremap <buffer> <leader>r :call vice#polyglot#run('node')<cr>
 
     let g:used_javascript_libs = 'backbone,chai,jquery,react,underscore'

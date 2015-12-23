@@ -186,7 +186,7 @@ call vice#Extend({
 
 " Go {{{
     let g:go_fmt_autosave = 1
-
+    let g:go#use_vimproc = 1
     au FileType go nnoremap <buffer> gd <Plug>(go-def)
     au FileType go nnoremap <buffer> <Leader>ds <Plug>(go-def-split)
     au FileType go nnoremap <buffer> <Leader>dt <Plug>(go-def-tab)

@@ -83,7 +83,7 @@ call vice#Extend({
             \ 'github:tpope/vim-fireplace',
         \ ],
         \ 'coffee': [
-            \ 'github:kchmck/vim-coffee-script',
+            \ 'github:zeekay/vim-coffee-script',
             \ 'github:othree/javascript-libraries-syntax.vim',
         \ ],
         \ 'elixir': [

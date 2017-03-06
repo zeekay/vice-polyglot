@@ -39,6 +39,7 @@ endif
     au BufNewFile,BufRead *.jsx,*.tag                   let b:jsx_ext_found = 1
     au BufNewFile,BufRead *.jsx,*.tag                   setl filetype=javascript.jsx
     au BufNewFile,BufRead *.less                        setl filetype=less
+    au BufNewFile,BufRead *.mjs                         setl filetype=javascript
     au BufNewFile,BufRead *.moon                        setl filetype=moon
     au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs setl filetype=html syntax=mustache | call vice#ForceActivateAddon('github:mustache/vim-mustache-handlebars')
     au BufNewFile,BufRead *.pug                         setl filetype=pug

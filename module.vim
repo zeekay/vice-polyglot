@@ -31,6 +31,7 @@ endif
     au BufNewFile,BufRead *.as                          setl filetype=actionscript
     au BufNewFile,BufRead *.bats                        setl filetype=bats syntax=sh | call vice#ForceActivateAddon('github:vim-scripts/bats.vim')
     au BufNewFile,BufRead *.coffee,*.cson,Cakefile      setl filetype=coffee | call vice#ForceActivateAddon('github:zeekay/vim-cake')
+    au BufNewFile,BufRead Sakefile                      setl filetype=coffee | call vice#ForceActivateAddon('github:zeekay/vim-sake')
     au BufNewFile,BufRead *.go                          setl filetype=go
     au BufNewFile,BufRead *.haml                        setl filetype=haml
     au BufNewFile,BufRead *.idr                         setl filetype=idris

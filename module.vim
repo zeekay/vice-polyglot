@@ -20,6 +20,7 @@ endif
     au FileType ruby,eruby setl omnifunc=rubycomplete#Complete
     au FileType xhtml,html setl omnifunc=htmlcomplete#CompleteTags
     au FileType xml        setl omnifunc=xmlcomplete#CompleteTags
+    au FileType typescript setl omnifunc=tsuquyomi#complete
 
     if !exists('g:vice.neocompletion.enable_tern')
         au FileType javascript setl omnifunc=javascriptcomplete#CompleteJS
@@ -51,7 +52,7 @@ endif
     au BufNewFile,BufRead *.scala.html                  setl filetype=html syntax=play2-html | call vice#ForceActivateAddons(['github:derekwyatt/vim-scala', 'github:gre/play2vim'])
     au BufNewFile,BufRead *.scss                        setl filetype=scss
     au BufNewFile,BufRead *.styl                        setl filetype=stylus
-    au BufNewFile,BufRead *.ts                          setl filetype=typescript
+    au BufNewFile,BufRead *.ts,*.tsx                    setl filetype=typescript
     au BufNewFile,BufRead *.{brainfuck,bf}              setl filetype=brainfuck
     au BufNewFile,BufRead *.{ex,exs}                    setl filetype=elixir
     au BufNewFile,BufRead *.{md,mkd,mkdn,mark*}         setl filetype=markdown
@@ -173,9 +174,28 @@ call vice#Extend({
         \ ],
         \ 'typescript': [
             \ 'github:HerringtonDarkholme/yats.vim',
+            \ 'github:jason0x43/vim-js-indent',
         \ ],
     \ },
 \ })
+
+if has('nvim')
+    call vice#Extend({
+        \ 'ft_addons': {
+            \ 'typescript': [
+                \ 'github:mhartington/nvim-typescript',
+            \ ],
+        \ }
+    \ })
+else
+    call vice#Extend({
+        \ 'ft_addons': {
+            \ 'typescript': [
+                \ 'github:Quramy/tsuquyomi',
+            \ ],
+        \ }
+    \ })
+endif
 
 " CoffeeScript {{{
     au FileType coffee setl foldmethod=indent nofoldenable
@@ -269,6 +289,14 @@ call vice#Extend({
     let g:virtualenv_directory = $VIRTUALENVS_DIR
     au FileType python setlocal nosmartindent
     au FileType python setlocal nocindent
+" }}}
+
+" TypeScript {{{
+    if !has('nvim')
+        set ballooneval
+        autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
+        autocmd FileType typescript nmap <buffer> <Leader>h : <C-u>echo tsuquyomi#hint()<CR>
+    endif
 " }}}
 
 " Clighter {{{

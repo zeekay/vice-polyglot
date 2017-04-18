@@ -293,8 +293,10 @@ endif
 
 " TypeScript {{{
     if !has('nvim')
-        set ballooneval
-        autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
+        if has('balloon_eval')
+            set ballooneval
+            autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
+        endif
         autocmd FileType typescript nmap <buffer> <Leader>h : <C-u>echo tsuquyomi#hint()<CR>
     endif
 " }}}

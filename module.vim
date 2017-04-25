@@ -8,7 +8,7 @@ endif
 
 " Indent {{{
     au FileType rust,xml,xhtml,htmldjango setl shiftwidth=4
-    au FileType css,html,less,coffee,haml,stylus,jade,javascript,javascript.jsx,json,pug,yaml setl shiftwidth=2
+    au FileType css,html,less,coffee,haml,stylus,jade,javascript,javascript.jsx,json,typescript,pug,yaml setl shiftwidth=2
 " }}}
 
 " Enable omnicomplete {{{
@@ -20,7 +20,6 @@ endif
     au FileType ruby,eruby setl omnifunc=rubycomplete#Complete
     au FileType xhtml,html setl omnifunc=htmlcomplete#CompleteTags
     au FileType xml        setl omnifunc=xmlcomplete#CompleteTags
-    au FileType typescript setl omnifunc=tsuquyomi#complete
 
     if !exists('g:vice.neocompletion.enable_tern')
         au FileType javascript setl omnifunc=javascriptcomplete#CompleteJS
@@ -297,7 +296,8 @@ endif
             set ballooneval
             autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
         endif
-        autocmd FileType typescript nmap <buffer> <Leader>h : <C-u>echo tsuquyomi#hint()<CR>
+        au FileType typescript nmap <buffer> <Leader>h : <C-u>echo tsuquyomi#hint()<CR>
+        au FileType typescript setl omnifunc=tsuquyomi#complete
     endif
 " }}}
 

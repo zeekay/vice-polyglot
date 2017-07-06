@@ -51,6 +51,7 @@ endif
     au BufNewFile,BufRead *.scala.html                  setl filetype=html syntax=play2-html | call vice#ForceActivateAddons(['github:derekwyatt/vim-scala', 'github:gre/play2vim'])
     au BufNewFile,BufRead *.scss                        setl filetype=scss
     au BufNewFile,BufRead *.styl                        setl filetype=stylus
+    au BufNewFile,BufRead *.sol                         setl filetype=solidity
     au BufNewFile,BufRead *.ts,*.tsx                    setl filetype=typescript
     au BufNewFile,BufRead *.{brainfuck,bf}              setl filetype=brainfuck
     au BufNewFile,BufRead *.{ex,exs}                    setl filetype=elixir
@@ -167,6 +168,9 @@ call vice#Extend({
         \ ],
         \ 'scss': [
             \ 'github:cakebaker/scss-syntax.vim',
+        \ ],
+        \ 'solidity': [
+            \ 'github:tomlion/vim-solidity',
         \ ],
         \ 'stylus': [
             \ 'github:wavded/vim-stylus',

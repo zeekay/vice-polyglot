@@ -140,7 +140,7 @@ call vice#Extend({
             \ 'github:leafo/moonscript-vim',
         \ ],
         \ 'nginx': [
-            \ 'github:evanmiller/nginx-vim-syntax',
+            \ 'github:chr4/nginx.vim',
         \ ],
         \ 'perl': [
             \ 'github:c9s/perlomni.vim',

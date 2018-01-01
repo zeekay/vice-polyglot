@@ -15,6 +15,7 @@ endif
     au FileType c          setl omnifunc=ccomplete#Complete
     au FileType coffee     setl omnifunc=javascriptcomplete#CompleteJS
     au FileType css        setl omnifunc=csscomplete#CompleteCSS
+    au FileType java       setl omnifunc=javacomplete#Complete
     au FileType php        setl omnifunc=phpcomplete#CompletePHP
     au FileType python     setl omnifunc=pythoncomplete#Complete
     au FileType ruby,eruby setl omnifunc=rubycomplete#Complete
@@ -111,6 +112,9 @@ call vice#Extend({
         \ ],
         \ 'jade': [
             \ 'github:digitaltoad/vim-jade',
+        \ ],
+        \ 'java': [
+            \ 'github:artur-shaik/vim-javacomplete2',
         \ ],
         \ 'javascript': [
             \ 'github:jason0x43/vim-js-indent',

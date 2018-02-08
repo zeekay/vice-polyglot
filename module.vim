@@ -8,7 +8,7 @@ endif
 
 " Indent {{{
     au FileType rust,xml,xhtml,htmldjango setl shiftwidth=4
-    au FileType css,html,less,coffee,haml,stylus,jade,javascript,javascript.jsx,json,typescript,pug,yaml setl shiftwidth=2
+    au FileType css,html,less,coffee,haml,stylus,jade,javascript,javascript.jsx,json,terraform,typescript,pug,yaml setl shiftwidth=2
 " }}}
 
 " Enable omnicomplete {{{
@@ -54,6 +54,7 @@ endif
     au BufNewFile,BufRead *.styl                        setl filetype=stylus
     au BufNewFile,BufRead *.sol                         setl filetype=solidity
     au BufNewFile,BufRead *.ts,*.tsx                    setl filetype=typescript
+    au BufNewFile,BufRead *.tf,*.tfvars                 setl filetype=terraform
     au BufNewFile,BufRead *.{brainfuck,bf}              setl filetype=brainfuck
     au BufNewFile,BufRead *.{ex,exs}                    setl filetype=elixir
     au BufNewFile,BufRead *.{md,mkd,mkdn,mark*}         setl filetype=markdown
@@ -178,6 +179,9 @@ call vice#Extend({
         \ ],
         \ 'stylus': [
             \ 'github:wavded/vim-stylus',
+        \ ],
+        \ 'terraform': [
+            \ 'github:hashivim/vim-terraform',
         \ ],
         \ 'typescript': [
             \ 'github:HerringtonDarkholme/yats.vim',

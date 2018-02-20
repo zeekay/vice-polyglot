@@ -235,6 +235,12 @@ endif
     au FileType go nnoremap <buffer> <leader>b  <Plug>(go-build)
     au FileType go nnoremap <buffer> <leader>t  <Plug>(go-test)
     au FileType go nnoremap <buffer> <leader>r  :call vice#polyglot#run('go run')<cr>
+
+    if has('nvim') || v:version >= 800
+        au FileType go call vice#ForceActivateAddons([
+            \ 'github:zchee/deoplete-go'
+        \ ])
+    endif
 " }}}
 
 " Haskell {{{

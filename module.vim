@@ -118,10 +118,11 @@ call vice#Extend({
             \ 'github:artur-shaik/vim-javacomplete2',
         \ ],
         \ 'javascript': [
-            \ 'github:jason0x43/vim-js-indent',
             \ 'github:othree/yajs.vim',
-            \ 'github:othree/es.next.syntax.vim',
             \ 'github:othree/javascript-libraries-syntax.vim',
+            \ 'github:othree/es.next.syntax.vim',
+            \ 'github:Quramy/vim-js-pretty-template',
+            \ 'github:jason0x43/vim-js-indent',
             \ 'github:zeekay/vim-js2coffee',
         \ ],
         \ 'json': [
@@ -184,29 +185,14 @@ call vice#Extend({
             \ 'github:hashivim/vim-terraform',
         \ ],
         \ 'typescript': [
+            \ 'github:othree/yajs.vim',
+            \ 'github:othree/javascript-libraries-syntax.vim',
             \ 'github:HerringtonDarkholme/yats.vim',
+            \ 'github:Quramy/vim-js-pretty-template',
             \ 'github:jason0x43/vim-js-indent',
         \ ],
     \ },
 \ })
-
-if has('nvim')
-    call vice#Extend({
-        \ 'ft_addons': {
-            \ 'typescript': [
-                \ 'github:mhartington/nvim-typescript',
-            \ ],
-        \ }
-    \ })
-else
-    call vice#Extend({
-        \ 'ft_addons': {
-            \ 'typescript': [
-                \ 'github:Quramy/tsuquyomi',
-            \ ],
-        \ }
-    \ })
-endif
 
 " CoffeeScript {{{
     au FileType coffee setl foldmethod=indent nofoldenable

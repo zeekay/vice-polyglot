@@ -185,9 +185,7 @@ call vice#Extend({
             \ 'github:hashivim/vim-terraform',
         \ ],
         \ 'typescript': [
-            \ 'github:othree/yajs.vim',
-            \ 'github:othree/javascript-libraries-syntax.vim',
-            \ 'github:HerringtonDarkholme/yats.vim',
+            \ 'github:leafgarland/typescript-vim',
             \ 'github:Quramy/vim-js-pretty-template',
             \ 'github:jason0x43/vim-js-indent',
         \ ],

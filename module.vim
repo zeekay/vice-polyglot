@@ -294,17 +294,6 @@ call vice#Extend({
     au FileType python setlocal nocindent
 " }}}
 
-" TypeScript {{{
-    if !has('nvim')
-        if has('balloon_eval')
-            set ballooneval
-            autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
-        endif
-        au FileType typescript nmap <buffer> <Leader>h : <C-u>echo tsuquyomi#hint()<CR>
-        au FileType typescript setl omnifunc=tsuquyomi#complete
-    endif
-" }}}
-
 " Clighter {{{
     let g:clighter_autostart = 0
 " }}}

@@ -74,9 +74,6 @@ call vice#Extend({
         \ 'c$\|lex\|yacc': [
             \ 'github:justinmk/vim-syntax-extra',
         \ ],
-        \ 'cpp$': [
-            \ 'github:bbchung/clighter',
-        \ ],
         \ 'css\|sass\|scss\|stylus': [
             \ 'github:hail2u/vim-css3-syntax',
             \ 'github:ap/vim-css-color',

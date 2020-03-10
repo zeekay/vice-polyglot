@@ -8,7 +8,7 @@ endif
 
 " Indent {{{
     au FileType rust,xml,xhtml,htmldjango setl shiftwidth=4
-    au FileType css,html,less,coffee,haml,stylus,jade,javascript,javascript.jsx,json,terraform,typescript,pug,yaml setl shiftwidth=2
+    au FileType css,html,less,coffee,haml,stylus,scss,jade,javascript,javascript.jsx,json,terraform,typescript,pug,yaml setl shiftwidth=2
 " }}}
 
 " Enable omnicomplete {{{

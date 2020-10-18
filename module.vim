@@ -62,6 +62,8 @@ endif
     au BufNewFile,BufRead /etc/pmta/config              setl filetype=config
     au BufNewFile,BufRead /usr/local/etc/nginx/*        setl filetype=nginx
     au BufNewFile,BufRead nginx.conf,/etc/nginx/*       setl filetype=nginx
+    au BufNewFile,BufRead *.toml                        setl filetype=toml
+    au BufNewFile,BufRead *.toml                        setl filetype=toml | call vice#ForceActivateAddon('github:cespare/vim-toml')
 " }}}
 
 call vice#Extend({
@@ -181,6 +183,9 @@ call vice#Extend({
         \ ],
         \ 'terraform': [
             \ 'github:hashivim/vim-terraform',
+        \ ],
+        \ 'toml': [
+            \ 'github:cespare/vim-toml',
         \ ],
         \ 'typescript': [
             \ 'github:leafgarland/typescript-vim',

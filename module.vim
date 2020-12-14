@@ -54,6 +54,7 @@ endif
     au BufNewFile,BufRead *.scss                        setl filetype=scss
     au BufNewFile,BufRead *.styl                        setl filetype=stylus
     au BufNewFile,BufRead *.sol                         setl filetype=solidity
+    au BufNewFile,BufRead *.sol                         setl filetype=solidity
     au BufNewFile,BufRead *.ts,*.tsx                    setl filetype=typescript
     au BufNewFile,BufRead *.tf,*.tfvars                 setl filetype=terraform
     au BufNewFile,BufRead *.{brainfuck,bf}              setl filetype=brainfuck
@@ -176,7 +177,7 @@ call vice#Extend({
             \ 'github:cakebaker/scss-syntax.vim',
         \ ],
         \ 'solidity': [
-            \ 'github:tomlion/vim-solidity',
+            \ 'github:TovarishFin/vim-solidity',
         \ ],
         \ 'stylus': [
             \ 'github:wavded/vim-stylus',

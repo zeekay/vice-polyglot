@@ -46,6 +46,7 @@ endif
     au BufNewFile,BufRead *.moon                        setl filetype=moon
     au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs setl filetype=html syntax=mustache | call vice#ForceActivateAddon('github:mustache/vim-mustache-handlebars')
     au BufNewFile,BufRead *.pug                         setl filetype=pug
+    au BufNewFile,BufRead *.pug                         setl filetype=pug
     au BufNewFile,BufRead *.purs                        setl filetype=purescript
     au BufNewFile,BufRead *.rs                          setl filetype=rust
     au BufNewFile,BufRead *.sass                        setl filetype=sass
@@ -54,7 +55,7 @@ endif
     au BufNewFile,BufRead *.scss                        setl filetype=scss
     au BufNewFile,BufRead *.styl                        setl filetype=stylus
     au BufNewFile,BufRead *.sol                         setl filetype=solidity
-    au BufNewFile,BufRead *.sol                         setl filetype=solidity
+    au BufNewFile,BufRead *.sol                         setl filetype=solidity | setl nofoldenable
     au BufNewFile,BufRead *.ts,*.tsx                    setl filetype=typescript
     au BufNewFile,BufRead *.tf,*.tfvars                 setl filetype=terraform
     au BufNewFile,BufRead *.{brainfuck,bf}              setl filetype=brainfuck
@@ -177,7 +178,7 @@ call vice#Extend({
             \ 'github:cakebaker/scss-syntax.vim',
         \ ],
         \ 'solidity': [
-            \ 'github:TovarishFin/vim-solidity',
+            \ 'github:thesis/vim-solidity',
         \ ],
         \ 'stylus': [
             \ 'github:wavded/vim-stylus',

@@ -38,13 +38,14 @@ endif
     au BufNewFile,BufRead *.idr                         setl filetype=idris
     au BufNewFile,BufRead *.jade                        setl filetype=jade
     au BufNewFile,BufRead *.json                        setl filetype=json
+    au BufNewFile,BufRead *.graphql,*.graphqls,*.gql    setl filetype=graphql | call vice#ForceActivateAddon('github:jparise/vim-graphql')
     au BufNewFile,BufRead *.jsx,*.tag                   let b:jsx_ext_found = 1
     au BufNewFile,BufRead *.jsx,*.tag                   setl filetype=javascript.jsx
     au BufNewFile,BufRead *.less                        setl filetype=less
     au BufNewFile,BufRead *.mjs                         setl filetype=javascript
-    au BufNewFile,BufRead *.omnijs                      setl filetype=javascript
     au BufNewFile,BufRead *.moon                        setl filetype=moon
     au BufNewFile,BufRead *.mustache,*.handlebars,*.hbs setl filetype=html syntax=mustache | call vice#ForceActivateAddon('github:mustache/vim-mustache-handlebars')
+    au BufNewFile,BufRead *.omnijs                      setl filetype=javascript
     au BufNewFile,BufRead *.pug                         setl filetype=pug
     au BufNewFile,BufRead *.pug                         setl filetype=pug
     au BufNewFile,BufRead *.purs                        setl filetype=purescript
@@ -53,9 +54,9 @@ endif
     au BufNewFile,BufRead *.sbt,*.scala                 setl filetype=scala
     au BufNewFile,BufRead *.scala.html                  setl filetype=html syntax=play2-html | call vice#ForceActivateAddons(['github:derekwyatt/vim-scala', 'github:gre/play2vim'])
     au BufNewFile,BufRead *.scss                        setl filetype=scss
-    au BufNewFile,BufRead *.styl                        setl filetype=stylus
     au BufNewFile,BufRead *.sol                         setl filetype=solidity
     au BufNewFile,BufRead *.sol                         setl filetype=solidity | setl nofoldenable
+    au BufNewFile,BufRead *.styl                        setl filetype=stylus
     au BufNewFile,BufRead *.ts,*.tsx                    setl filetype=typescript
     au BufNewFile,BufRead *.tf,*.tfvars                 setl filetype=terraform
     au BufNewFile,BufRead *.{brainfuck,bf}              setl filetype=brainfuck

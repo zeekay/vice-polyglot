@@ -70,6 +70,9 @@ endif
 " }}}
 
 call vice#Extend({
+    \ 'addons': [
+            \ 'github:ap/vim-css-color',
+      \ ],
     \ 'ft_addons': {
         \ 'actionscript': [
             \ 'github:endel/actionscript.vim',
@@ -82,7 +85,6 @@ call vice#Extend({
         \ ],
         \ 'css\|sass\|scss\|stylus': [
             \ 'github:hail2u/vim-css3-syntax',
-            \ 'github:ap/vim-css-color',
         \ ],
         \ 'clojure': [
             \ 'github:guns/vim-clojure-static',
